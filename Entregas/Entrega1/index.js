@@ -11,7 +11,7 @@ while(login){
             alert("BIENVENIDO AL SISTEMA "+ user);
             login=false;} //Para salir del while
         } else if (option==1) {
-            alert("Vuelva Pronto");
+            alert("Vuelva Pronto"); 
             login=false;
         } else if (option=="" || option>1) {
             prompt("Ingrese Opcion Correcta: \n 0. Login. \n 1.Salir"); 
