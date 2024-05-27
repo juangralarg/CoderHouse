@@ -1,27 +1,58 @@
-//PRIMERA ENTREGA
-//Login basico usando una version con SWITCH y otra con sentencias IF, IF ELSE y WHILE 
+//SEGUNDA ENTREGA
+//Pide ingresar datos que van a un Array y luego con ese usuario habilita acceder a sisema
+let userdb=[]; //Crea natriz vacia "matriz"
+
+let u;
+
+registro();
+login();
 
 
-
-
-
-//-------------------------------------------------
-//FUNCION ingreso datos
-//-------------------------------------------------
-/* 
-function ingreso (){
-const lista = [ "Nombre: ",  "Apellido: ", "Cedula: " ];
-console.log(lista.values); */
-
-  
-/*     for (let value of lista) {
-        dato = prompt ("Ingrese :");
-        value += 1;
-        console.log(value);
-      }*/
-/* } 
-
-
-
-ingreso();
+/**
+ * FUNCION REGISTRO USUARIO
  */
+function registro (){
+    
+  let head = ['Nombre', 'Apellido','Cedula','usuario','Password'];
+  //let x = head.length; //Cuenta los datos a solicitar (Array "head")
+
+  // USANDO FOR..OF
+  for (let d of head) {
+    dato=prompt("Ingrese "+d+": ");
+      if (dato ===null){ 
+        alert("Debe ingresar usuario");
+        d=d-1;}
+
+      else{
+      userdb.push([d,dato])};
+  }
+  return userdb;
+  
+  }
+
+/**
+* FUNCION LOGIN USUARIO
+*/
+function login (){
+  let user;let x=true;
+  console.log(userdb);
+  while (x) {
+      user=prompt("Ingrese un Usuario: ");
+  
+      
+      if (user === null) {// Verificar si el input es nulo (el usuario canceló el prompt)
+        alert("Ingrese opcion valida.");
+      }else if (user !== "") {
+          let indice = userdb.includes(user);//user es valor buscado en array userdb
+        
+          if (indice !== -1 && user===userdb[3][1]) {               
+
+              alert("BIENVENIDO AL SISTEMA ");
+              console.log("EL USUARIO ES: "+userdb[3][1]);
+              x=false;
+           }
+      }
+  }
+}
+  
+
