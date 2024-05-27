@@ -1,35 +1,5 @@
-//PRIMERA ENTREGA
-//Login basico usando una version con SWITCH y otra con sentencias IF, IF ELSE y WHILE 
 
-
-
-
-
-//-------------------------------------------------
-//Menu Inicial
-//-------------------------------------------------
 let userdb=[]; //Crea natriz vacia "matriz"
-let log = true;
-while(log){
-let option = parseInt(prompt(" Opcion: \n 0. Login. \n 1.Salir \n 2.Registrarse"));
-     switch(option){
-        case 0:
-            login();
-            break;
-        case 1:
-            alert("Vuelva Pronto"); 
-            log=false;
-            break;
-        case 2:
-            registro();
-            break;
-        default:
-            alert("Ingrese Opcion Correcta");
-            break;
-            }}
-
-
-console.log("Aqui continua el codigo ");
 
 /**
  * FUNCION REGISTRO USUARIO
@@ -51,7 +21,7 @@ function registro (){
 /**
  * FUNCION LOGIN USUARIO
  */
-function login (){
+/* function login (){
     let user=prompt("Ingrese un Usuario: ");
     let indice = userdb.indexOf(user);//user es valor buscado en array userdb
     if (user==""){
@@ -62,8 +32,7 @@ function login (){
         log=false;//Para salir del while
     } else {
         alert("Debe ingresar usuario registrardo.");
-    } 
-}
+    }  */
 
-
-
+    
+registro();
