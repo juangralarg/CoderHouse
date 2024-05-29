@@ -6,17 +6,29 @@ body {
     font-family: sans-serif;
     font-weight: normal;
     font-size: 100%;
-    color: #1b262c;
+    color: #a6d6ef;
     
     margin: 0;
     background-color: #0f4c75;
 } 
 p {
-    background-color: black;
+    padding: 20px;
+    width: 30%; 
+    background-color: rgb(19, 188, 231);
     text-align: center;
     font-weight: bold;
     color: aliceblue;
+    border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 35px 0px 35px 0px;
+    -webkit-border-radius: 35px 0px 35px 0px;
+    border: 2px solid #5878ca;
 }
+
+#div1 {
+    align-content: center;
+    align-self: center;
+}
+ 
 #contenedor {
     display: flex;
     align-items: center;
