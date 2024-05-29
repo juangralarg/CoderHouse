@@ -56,7 +56,7 @@ class Login {
             console.log(u.pass);
             let user=prompt("PASSWORD: ");
         if (user===u.pass){
-            alert("Validacion correcta!! /n SIGA SIGA")
+            alert("Validacion correcta!! \n SIGA SIGA")
             break;
         }else {alert("Clave INCORRECTA")}
             
