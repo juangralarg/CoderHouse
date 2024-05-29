@@ -1,5 +1,7 @@
 
-
+/**
+ * CLASE CON METODOS PARA REGISTRO Y ACCESO
+ */
 
 class User {
     constructor(nombre, apellido, cedula, usuario,pass){
@@ -9,47 +11,73 @@ class User {
         this.usuario= usuario;
         this.pass=pass ;
        }
-    SetDatos (){
+    ingresoDatos (){
             this.nombre=prompt("Ingrese Nombre: ");
             this.apellido=prompt("Ingrese Apellido: ");
             this.cedula=prompt("Ingrese Cedula: ");
             this.usuario=prompt("Ingrese Usuario: ");
             this.pass=prompt("Ingrese Password: ");
-            return;
-
-    }
-    }
+            this.datosU=[{
+                nombre: this.nombre,
+                apellido: this.apellido,
+                cedula:this.cedula,
+                usuario: this.usuario,
+                pass: this.pass
+            }]
+   }
+}
 
 class Login {
+    u = new User();
     constructor(usuario,pass){
         this.usuario= usuario;
         this.pass=pass ;
        }
     login (){
-        let x=true;
+        let x=true; let y=true;
         while (x) {
-            user=prompt("Ingrese un Usuario: ");
-        
+            console.log(u.usuario);
+            let user=prompt("USUARIO: ");
+        if (user===u.usuario){
+            //alert("Usuario Valido!! /n SIGA SIGA")
+            break;
+        }else {alert("INGRESE USUARIO VALIDO")}
             
-            if (usuario === null) {// Verificar si el input es nulo (el usuario canceló el prompt)
-              alert("Ingrese opcion valida.");
-            }else if (usuario !== "") {
-                let indice = userdb.includes(usuario);//user es valor buscado en array userdb
-              
-                if (indice !== -1 && user===userdb[3][1]) {               
-      
-                    alert("BIENVENIDO AL SISTEMA ");
-                    console.log("EL USUARIO ES: "+ userdb[3][1]);
-                    x=false;
-                 }
-            }
         }
-      }
+        while (y) {
+            console.log(u.pass);
+            let user=prompt("PASSWORD: ");
+        if (user===u.pass){
+            alert("Validacion correcta!! /n SIGA SIGA")
+            break;
+        }else {alert("Clave INCORRECTA")}
+            
+        }
+    }
 }
-    const u = new User(); 
 
-    u.SetDatos();
-
-    console.log(u);
-    console.log("EL USUARIO ES: "+u.usuario);
-
+/**
+ * CODIGO 
+ */
+let opcion=true;
+const u = new User();
+while(opcion){
+let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n   2.SALIR\n\n"));
+    switch (opt) {
+        case 0:
+            //const u = new User(); 
+            u.ingresoDatos();//Pide registro de datos usuario
+        break;
+        case 1:
+            const l = new Login();
+            l.login();//Pide Login usando datos ingresados
+        break;
+        case 2:
+        opcion=false;
+        break;
+        default:
+        alert("INGRSE VALOR VALIDO");
+        break;
+    }
+}
+alert("USTED SALIO DEL SISTEMA");

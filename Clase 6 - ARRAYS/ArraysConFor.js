@@ -1,13 +1,6 @@
 //SEGUNDA ENTREGA
 //ARRAY
 
-/**
- * PIDE INGRESAR LOS DATOS DE PERSONAS EN UN ARRAY
- * 
- */
-
-//CREO MATRIZ
-
 //PIDE INGRESAR LOS DATOS AL ARRAY
 
 let head = ['Nombre', 'Apellido','Cedula'];

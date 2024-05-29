@@ -1,61 +1,83 @@
-//PARA SEGUNDA ENTREGA
-//Pide ingresar datos que van a un Array y luego con ese usuario habilita acceder a sistema
-let userdb=[]; //Crea matriz vacia "userdb"
-let u; //Variable de pruebas
 
-/**==========================
- * FUNCIONES QUE SE EJECUTAN:
- *===========================*/
+/**
+ * CLASE CON METODOS PARA REGISTRO Y ACCESO
+ */
 
-registro();
-login();
-
-
-/**===================================
- * FUNCION REGISTRO USUARIO CON ARRAY
- *====================================*/
-function registro (){
-    
-  let head = ['Nombre', 'Apellido','Cedula','usuario','Password'];
-  let dato;
-  //let x = head.length; //Cuenta los datos a solicitar (Array "head")
-
-  // USANDO FOR..OF
-  for (let d of head) {
-    dato=prompt("Ingrese "+d+": ");
-      if (dato === null){ 
-        alert("Debe ingresar dato");
-        d=--d;//Esto restaria uno para que vuelva a contar para repetir el prompt de "dato"
-        } else{
-              userdb.push([d,dato])};
-  }
-
-  return userdb;
+class User {
+    constructor(nombre, apellido, cedula, usuario,pass){
+        this.nombre= nombre;
+        this.apellido= apellido;
+        this.cedula= cedula;
+        this.usuario= usuario;
+        this.pass=pass ;
+       }
+    ingresoDatos (){
+            this.nombre=prompt("Ingrese Nombre: ");
+            this.apellido=prompt("Ingrese Apellido: ");
+            this.cedula=prompt("Ingrese Cedula: ");
+            this.usuario=prompt("Ingrese Usuario: ");
+            this.pass=prompt("Ingrese Password: ");
+            this.datosU=[{
+                nombre: this.nombre,
+                apellido: this.apellido,
+                cedula:this.cedula,
+                usuario: this.usuario,
+                pass: this.pass
+            }]
+   }
 }
 
-/**====================
-* FUNCION LOGIN USUARIO
-*======================*/
-function login (){
-  let user;let x=true;
-  console.log(userdb);
-  while (x) {
-      user=prompt("Ingrese un Usuario: ");
-  
-      
-      if (user === null) {// Verificar si el input es nulo (el usuario canceló el prompt)
-        alert("Ingrese opcion valida.");
-      }else if (user !== "") {
-          let indice = userdb.includes(user);//user es valor buscado en array userdb
-        
-          if (indice !== -1 && user===userdb[3][1]) {               
-
-              alert("BIENVENIDO AL SISTEMA ");
-              console.log("EL USUARIO ES: "+ userdb[3][1]);
-              x=false;
-           }
-      }
-  }
+class Login {
+    u = new User();
+    constructor(usuario,pass){
+        this.usuario= usuario;
+        this.pass=pass ;
+       }
+    login (){
+        let x=true; let y=true;
+        while (x) {
+            console.log(u.usuario);
+            let user=prompt("USUARIO: ");
+        if (user===u.usuario){
+            //alert("Usuario Valido!! /n SIGA SIGA")
+            break;
+        }else {alert("INGRESE USUARIO VALIDO")}
+            
+        }
+        while (y) {
+            console.log(u.pass);
+            let user=prompt("PASSWORD: ");
+        if (user===u.pass){
+            alert("Validacion correcta!! /n SIGA SIGA")
+            break;
+        }else {alert("Clave INCORRECTA")}
+            
+        }
+    }
 }
-  
 
+/**
+ * CODIGO 
+ */
+let opcion=true;
+const u = new User();
+while(opcion){
+let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n   2.SALIR\n\n"));
+    switch (opt) {
+        case 0:
+            //const u = new User(); 
+            u.ingresoDatos();//Pide registro de datos usuario
+        break;
+        case 1:
+            const l = new Login();
+            l.login();//Pide Login usando datos ingresados
+        break;
+        case 2:
+        opcion=false;
+        break;
+        default:
+        alert("INGRSE VALOR VALIDO");
+        break;
+    }
+}
+alert("USTED SALIO DEL SISTEMA");
