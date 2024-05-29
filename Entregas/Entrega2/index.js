@@ -47,7 +47,7 @@ class Login {
             y=false;
             break;
         } else if (user===u.usuario){
-            //alert("Usuario Valido!! /n SIGA SIGA")
+            //NO HAY ACCIONES AQUI,SI VALIDA user, SALTA A BLOQUE WHILE(y) DEL PASSWORD
             break;
         }else {alert("INGRESE USUARIO VALIDO")}
             
@@ -73,7 +73,6 @@ while(opcion){
 let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n   2.SALIR\n\n"));
     switch (opt) {
         case 0:
-            //const u = new User(); 
             u.ingresoDatos();//Pide registro de datos usuario
         break;
         case 1:
