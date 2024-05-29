@@ -35,10 +35,18 @@ class Login {
        }
     login (){
         let x=true; let y=true;
+        if(u.usuario===null){
+            alert("DEBE REGISTRAR USUARIO");
+            u.ingresoDatos();
+        }
         while (x) {
             console.log(u.usuario);
-            let user=prompt("USUARIO: ");
-        if (user===u.usuario){
+            let user=prompt("INGRESE USUARIO O X PARA MENU: ");
+        if(user ==="X" || user==="x"){
+            x=false;
+            y=false;
+            break;
+        } else if (user===u.usuario){
             //alert("Usuario Valido!! /n SIGA SIGA")
             break;
         }else {alert("INGRESE USUARIO VALIDO")}
