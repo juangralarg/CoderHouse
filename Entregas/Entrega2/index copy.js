@@ -10,29 +10,8 @@ class User {
         this.cedula= cedula;
         this.usuario= usuario;
         this.pass=pass ;
-        //this.datosU={};
-        
        }
     ingresoDatos (){
-        const datosU={
-            nombre: this.nombre,
-            apellido: this.apellido,
-            cedula:this.cedula,
-            usuario: this.usuario,
-            pass: this.pass
-        };
-
-        for (const property in datosU) {
-
-            datosU[property] = prompt('Ingrese '+property+': '); 
-        }
-        console.log(datosU);
-        return Object.entries(datosU);
-        /**
-         * ESTE ES EL CODIGO QUE TENGO FUNCIONANDO, QUIERO HACERLO ANDAR PERO CON EL FOR
-         */
-
-/*         ingresoDatos (){
             this.nombre=prompt("Ingrese Nombre: ");
             this.apellido=prompt("Ingrese Apellido: ");
             this.cedula=prompt("Ingrese Cedula: ");
@@ -45,49 +24,42 @@ class User {
                 usuario: this.usuario,
                 pass: this.pass
             }]
-   } */
-
-
    }
 }
 
-class Login extends User {
-    //u = new User(); //INSTANCIO CLASE USER PARA PODER USAR FUNCIONES DE LA MISMA
-    
+class Login {
+    u = new User();
     constructor(usuario,pass){
-       super (usuario,pass);
-/*         this.usuario= usuario;
-        this.pass=pass ; */
+        this.usuario= usuario;
+        this.pass=pass ;
        }
-
     login (){
-     let x=true; let y=true;
-     console.log("En LOGIN: ");
-     console.log(u.usuario);//PARA VER SI CAPTURÓ USUARIO
+        let x=true; let y=true;
         if(u.usuario===null){
             alert("DEBE REGISTRAR USUARIO");
             u.ingresoDatos();
         }
         while (x) {
-            console.log("While X: ");
-            console.log(u.usuario);//PARA VER SI CAPTURÓ USUARIO
+            console.log(u.usuario);
             let user=prompt("INGRESE USUARIO O X PARA MENU: ");
         if(user ==="X" || user==="x"){
             x=false;
             y=false;
             break;
-            } else if (user===u.usuario){
-                //NO HAY ACCIONES AQUI,SI VALIDA user, SALTA A BLOQUE WHILE(y) DEL PASSWORD
-                break;
-            }else {alert("INGRESE USUARIO VALIDO")}   
+        } else if (user===u.usuario){
+            //NO HAY ACCIONES AQUI,SI VALIDA user, SALTA A BLOQUE WHILE(y) DEL PASSWORD
+            break;
+        }else {alert("INGRESE USUARIO VALIDO")}
+            
         }
         while (y) {
             console.log(u.pass);
             let user=prompt("PASSWORD: ");
-                if (user===u.pass){
-                    alert("Validacion correcta!! \n SIGA SIGA")
-                    break;
-                }else {alert("Clave INCORRECTA")}     
+        if (user===u.pass){
+            alert("Validacion correcta!! \n SIGA SIGA")
+            break;
+        }else {alert("Clave INCORRECTA")}
+            
         }
     }
 }
@@ -104,8 +76,6 @@ let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n 
             u.ingresoDatos();//Pide registro de datos usuario
         break;
         case 1:
-            console.log("EnSWITCH: ");
-            console.log(u.usuario); //PARA VER SI CAPTURA USUARIO
             const l = new Login();
             l.login();//Pide Login usando datos ingresados
         break;
