@@ -19,6 +19,9 @@ class User {
         }
        }
     ingresoDatos (){
+/**
+ * USANDO PROMPT PARA INGRESO DE DATOS
+ */
             // this.nombre=prompt("Ingrese Nombre: ");
             // this.apellido=prompt("Ingrese Apellido: ");
             // this.cedula=prompt("Ingrese Cedula: ");
@@ -31,6 +34,9 @@ class User {
             //     usuario: this.usuario,
             //     pass: this.pass
             // }]
+/**
+ * USANDO UN FOR..IN PARA INGRESO DE DATOS
+ */
                 const datosU={
                     nombre: this.nombre,
                     apellido: this.apellido,
