@@ -57,7 +57,8 @@ class Login {
             let user=prompt("PASSWORD: ");
         if (user===u.pass){
             alert("Validacion correcta!! \n SIGA SIGA")
-            break;
+            y=false;
+            
         }else {alert("Clave INCORRECTA")}
             
         }
