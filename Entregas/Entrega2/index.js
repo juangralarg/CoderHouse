@@ -58,20 +58,20 @@ class User {
 
     // Método para obtener la contraseña
     darPass() {
-        return this.pass;
+        return this.datosU.pass;
     }
    
 
      login (){
         let x=true; let y=true;
-        console.log("DENTRO DEL LOGIN: "+ this.datosU.usuario);
+        console.log("DENTRO DEL LOGIN: "+ this.darUsuario());
     
         if(this.datosU.usuario===null){
             alert("DEBE REGISTRAR USUARIO");
             this.ingresoDatos();
         }
         while (x) {
-            console.log("USUARIO en WHILE(x): "+this.datosU.pass);
+            console.log("USUARIO en WHILE(x): "+this.darPass());
             let user=prompt("INGRESE USUARIO O X PARA MENU: ");
                 if(user ==="X" || user==="x"){
                     x=false;
@@ -83,12 +83,13 @@ class User {
                 }else {alert("INGRESE USUARIO VALIDO")}
         }
         while (y) {
-            console.log("PASS en el WHILE(y): "+this.datosU.pass);
             let user=prompt("PASSWORD: ");
                 if (user===this.datosU.pass){
-                    alert("Validacion correcta!! \n SIGA SIGA")
+                    alert("Validacion correcta!! \n SIGA SIGA");
+                    x=false;
+                    y=false;
                     break;
-                }else {alert("Clave INCORRECTA")}
+                    }else {alert("Clave INCORRECTA")}
         }
     }
 }
@@ -107,6 +108,7 @@ let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n 
         break;
         case 1:
             u.login();//Pide Login usando datos ingresados
+            opcion=false;
         break;
         case 2:
         opcion=false;
