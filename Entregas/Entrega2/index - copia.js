@@ -18,7 +18,7 @@ class User {
             pass: this.pass
         }
        }
-
+       
     ingresoDatos (){
 /**
  * USANDO PROMPT  Y VARIABLES SIMPLES PARA INGRESO DE DATOS
@@ -54,15 +54,13 @@ class User {
     
      login (){
         let x=true; let y=true;
-/*         this.usuario=usuario;
-        this.pass=usuario; */
-        console.log("DENTRO DEL LOGIN: "+ this.datosU.usuario);//LINEA PARA VERIFICACION EN CONSOLA
+        console.log("DENTRO DEL LOGIN: "+ this.usuario);//LINEA PARA VERIFICACION EN CONSOLA
             if(this.datosU.usuario===null){
                 alert("DEBE REGISTRAR USUARIO");
                 this.ingresoDatos();
             }
             while (x) {
-            console.log("USUARIO en WHILE(x): "+this.datosU.pass);//LINEA PARA VERIFICACION EN CONSOLA
+            console.log("USUARIO en WHILE(x): "+this.pass);//LINEA PARA VERIFICACION EN CONSOLA
                 let user=prompt("INGRESE USUARIO O X PARA SALIR: ");
                     if(user ==="X" || user==="x"){
                         x=false;
@@ -89,7 +87,7 @@ class User {
  * CODIGO 
  */
 let opcion=true;
-const u = new User();//INSTANCIO CLASE
+const u = new User();
 
 while(opcion){
 let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n   2.SALIR\n\n"));
