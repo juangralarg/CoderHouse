@@ -51,7 +51,7 @@ class User {
                 console.log(datosU);    
             return this.datosU=datosU;
             }
-    
+     
      login (){
         let x=true; let y=true;
 /*         this.usuario=usuario;
