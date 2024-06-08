@@ -18,9 +18,10 @@ class User {
             pass: this.pass
         }
        }
+
     ingresoDatos (){
 /**
- * USANDO PROMPT PARA INGRESO DE DATOS
+ * USANDO PROMPT  Y VARIABLES SIMPLES PARA INGRESO DE DATOS
  */
             // this.nombre=prompt("Ingrese Nombre: ");
             // this.apellido=prompt("Ingrese Apellido: ");
@@ -35,7 +36,7 @@ class User {
             //     pass: this.pass
             // }]
 /**
- * USANDO UN FOR..IN PARA INGRESO DE DATOS
+ * USANDO OBJETO y FOR..IN PARA INGRESO DE DATOS
  */
                 const datosU={
                     nombre: this.nombre,
@@ -51,46 +52,34 @@ class User {
             return this.datosU=datosU;
             }
     
-    // Método para obtener el nombre de usuario
-    darUsuario() {
-        return this.datosU.usuario;
-    }
-
-    // Método para obtener la contraseña
-    darPass() {
-        return this.datosU.pass;
-    }
-   
-
      login (){
         let x=true; let y=true;
-        console.log("DENTRO DEL LOGIN: "+ this.darUsuario());
-    
-        if(this.datosU.usuario===null){
-            alert("DEBE REGISTRAR USUARIO");
-            this.ingresoDatos();
-        }
-        while (x) {
-            console.log("USUARIO en WHILE(x): "+this.darPass());
-            let user=prompt("INGRESE USUARIO O X PARA MENU: ");
-                if(user ==="X" || user==="x"){
-                    x=false;
-                    y=false;
-                    break;
-                } else if (user===this.datosU.usuario){
-                    //NO HAY ACCIONES AQUI,SI VALIDA user, SALTA A BLOQUE WHILE(y) A VALIDAR PASSWORD
-                    break;
-                }else {alert("INGRESE USUARIO VALIDO")}
-        }
-        while (y) {
-            let user=prompt("PASSWORD: ");
-                if (user===this.datosU.pass){
-                    alert("Validacion correcta!! \n SIGA SIGA");
-                    x=false;
-                    y=false;
-                    break;
+        console.log("DENTRO DEL LOGIN: "+ this.darUsuario());//LINEA PARA VERIFICACION EN CONSOLA
+            if(this.datosU.usuario===null){
+                alert("DEBE REGISTRAR USUARIO");
+                this.ingresoDatos();
+            }
+            while (x) {
+            console.log("USUARIO en WHILE(x): "+this.darPass());//LINEA PARA VERIFICACION EN CONSOLA
+                let user=prompt("INGRESE USUARIO O X PARA SALIR: ");
+                    if(user ==="X" || user==="x"){
+                        x=false;
+                        y=false;
+                        break;
+                    } else if (user===this.datosU.usuario){
+                        //NO HAY ACCIONES AQUI,SI VALIDA user, SALTA A BLOQUE WHILE(y) A VALIDAR PASSWORD
+                        break;
+                    }else {alert("INGRESE USUARIO VALIDO O DEBE REGISTRARSE")}
+            }
+            while (y) {
+                let user=prompt("PASSWORD: ");
+                    if (user===this.datosU.pass){
+                        alert("Validacion correcta!! \n SIGA SIGA");
+                        x=false;
+                        y=false;opcion=false;
+                        break;
                     }else {alert("Clave INCORRECTA")}
-        }
+            }
     }
 }
 
@@ -98,7 +87,7 @@ class User {
  * CODIGO 
  */
 let opcion=true;
-const u = new User();
+const u = new User();//INSTANCIO CLASE
 
 while(opcion){
 let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n   2.SALIR\n\n"));
@@ -107,15 +96,14 @@ let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n 
             u.ingresoDatos();//Pide registro de datos usuario
         break;
         case 1:
-            u.login();//Pide Login usando datos ingresados
-            opcion=false;
-        break;
+            u.login();//Pide Login usando datos ingresados  
+            break;
         case 2:
-        opcion=false;
-        break;
+            opcion=false;
+            break;
         default:
-        alert("INGRSE VALOR VALIDO");
+            alert("INGRSE VALOR VALIDO");
         break;
     }
 }
-alert("USTED SALIO DEL SISTEMA");
+alert("USTED ESTA SALIENDO DEL LOGIN");
