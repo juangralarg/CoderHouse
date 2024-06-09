@@ -18,25 +18,11 @@ class User {
             pass: this.pass
         }
        }
+/**
+ * USANDO OBJETO y FOR..IN PARA INGRESO DE DATOS
+ */
     ingresoDatos (){
-/**
- * USANDO PROMPT PARA INGRESO DE DATOS
- */
-            // this.nombre=prompt("Ingrese Nombre: ");
-            // this.apellido=prompt("Ingrese Apellido: ");
-            // this.cedula=prompt("Ingrese Cedula: ");
-            // this.usuario=prompt("Ingrese Usuario: ");
-            // this.pass=prompt("Ingrese Password: ");
-            // this.datosU=[{
-            //     nombre: this.nombre,
-            //     apellido: this.apellido,
-            //     cedula:this.cedula,
-            //     usuario: this.usuario,
-            //     pass: this.pass
-            // }]
-/**
- * USANDO UN FOR..IN PARA INGRESO DE DATOS
- */
+
                 const datosU={
                     nombre: this.nombre,
                     apellido: this.apellido,
@@ -50,61 +36,50 @@ class User {
                 console.log(datosU);    
             return this.datosU=datosU;
             }
-    
-    // Método para obtener el nombre de usuario
-    darUsuario() {
-        
-        console.log("DENTRO DE darUsuario(): "+this.datosU.usuario);
-        return this.datosU.usuario;
-    }
+     listarUsuario(){
+        const datosU=[{
+            nombre: this.nombre,
+            apellido: this.apellido,
+            cedula:this.cedula,
+            usuario: this.usuario,
+            pass: this.pass
+        }];
+        datosU.forEach((elemento) => {
+            console.log(elemento.nombre);
+        });
 
-    // Método para obtener la contraseña
-    darPass() {
-        return this.datosU.pass;
-    }
-   
-}
-
-/**
- * CLASE LOGUIN QUE EXTIENDE DE USER
- */
-
-    class Login extends User{
-
-        constructor(usuario,pass){
-            super(usuario,pass);
-this.usuario=usuario;
-        }
-
-        login(){
+        return this.datosU=datosU;
+     }
+     
+     login (){
         let x=true; let y=true;
-        console.log("DENTRO DEL LOGIN: "+ this.usuario);
-    
-        if(this.datosU.usuario===null){
-            alert("DEBE REGISTRAR USUARIO");
-            this.ingresoDatos();
-        }
-        while (x) {
-            console.log("USUARIO en WHILE(x): "+this.darPass());
-            let user=prompt("INGRESE USUARIO O X PARA MENU: ");
-                if(user ==="X" || user==="x"){
-                    x=false;
-                    y=false;
-                    break;
-                } else if (user===this.datosU.usuario){
-                    //NO HAY ACCIONES AQUI,SI VALIDA user, SALTA A BLOQUE WHILE(y) A VALIDAR PASSWORD
-                    break;
-                }else {alert("INGRESE USUARIO VALIDO")}
-        }
-        while (y) {
-            let user=prompt("PASSWORD: ");
-                if (user===this.datosU.pass){
-                    alert("Validacion correcta!! \n SIGA SIGA");
-                    x=false;
-                    y=false;
-                    break;
+
+        console.log("DENTRO DEL LOGIN: "+ this.datosU.usuario);//LINEA PARA VERIFICACION EN CONSOLA
+            if(this.datosU.usuario===null){
+                alert("DEBE REGISTRAR USUARIO");
+                this.ingresoDatos();
+            }
+            while (x) {
+            console.log("USUARIO en WHILE(x): "+this.datosU.pass);//LINEA PARA VERIFICACION EN CONSOLA
+                let user=prompt("INGRESE USUARIO O X PARA SALIR: ");
+                    if(user ==="X" || user==="x"){
+                        x=false;
+                        y=false;
+                        break;
+                    } else if (user===this.datosU.usuario){
+                        //NO HAY ACCIONES AQUI,SI VALIDA user, SALTA A BLOQUE WHILE(y) A VALIDAR PASSWORD
+                        break;
+                    }else {alert("INGRESE USUARIO VALIDO O DEBE REGISTRARSE")}
+            }
+            while (y) {
+                let user=prompt("PASSWORD: ");
+                    if (user===this.datosU.pass){
+                        alert("Validacion correcta!! \n SIGA SIGA");
+                        x=false;
+                        y=false;opcion=false;
+                        break;
                     }else {alert("Clave INCORRECTA")}
-        }
+            }
     }
 }
 
@@ -112,25 +87,26 @@ this.usuario=usuario;
  * CODIGO 
  */
 let opcion=true;
-const u = new User();
-const l = new Login();
+const u = new User();//INSTANCIO CLASE
 
 while(opcion){
-let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n   2.SALIR\n\n"));
+let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n  2.LISTAR USUARIO\n  3.SALIR\n\n"));
     switch (opt) {
         case 0:
             u.ingresoDatos();//Pide registro de datos usuario
         break;
         case 1:
-            l.login();//Pide Login usando datos ingresados
-            opcion=false;
-        break;
+            u.login();//Pide Login usando datos ingresados  
+            break;
         case 2:
-        opcion=false;
-        break;
+            u.listarUsuario();
+            break;
+        case 3:
+            opcion=false;
+            break;
         default:
-        alert("INGRSE VALOR VALIDO");
+            alert("INGRSE VALOR VALIDO");
         break;
     }
 }
-alert("USTED SALIO DEL SISTEMA");
+alert("USTED ESTA SALIENDO DEL LOGIN");
