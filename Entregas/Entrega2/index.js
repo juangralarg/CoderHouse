@@ -92,7 +92,7 @@ let opcion=true;
 const u = new User();//INSTANCIO CLASE
 
 while(opcion){
-let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n   2.SALIR\n\n"));
+let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1. LOGIN\n   2. SALIR\n\n"));
     switch (opt) {
         case 0:
             u.ingresoDatos();//Pide registro de datos usuario
@@ -108,4 +108,5 @@ let opt=parseInt(prompt ("INGRESE OPCION:\n   0. REGISTRO USUARIO\n   1.LOGIN\n 
         break;
     }
 }
-alert("USTED ESTA SALIENDO DEL LOGIN");
+const hoy = new Date();
+alert("HOY "+hoy.toLocaleDateString()+" USTED ESTA SALIENDO DEL SISTEMA");// "14/6/2020"
