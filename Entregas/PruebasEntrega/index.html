@@ -2,35 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./estilos.css" type="text/css">
-    <script async src="./index.js"></script>
-    <title>ENTREGA 01</title>
+    <title>Login Proyecto CoderHouse</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
-
 <body>
-        
-        <div id="contenedor">
-            <div id="central">
-                <div id="login">
-                    <div class="titulo">
-                        Acceso Usuario
-                    </div>
-                    <form id="loginform">
-                        <input type="text" name="usuario" placeholder="Usuario" required>
-                        
-                        <input type="password" placeholder="Contrasena" name="password" required>
-                        
-                        <button type="submit" title="Ingresar" name="Ingresar">Login</button>
-                    </form>
-                    <div class="pie-form">
-                        No tienes usuario?<a href="#">Registrate</a>
-                    </div>
-                </div>
-                <div class="inferior">
-                    <a href="#">Inicio</a>
-                </div>
-            </div>
+    <div class="contenedor-form">
+        <div class="toggle">
+            <span> Crear Cuenta</span>
         </div>
+        
+        <div class="formulario">
+            <h2>Iniciar Sesión</h2>
+            <form action="#">
+                <input type="text" id="GetUsuario" placeholder="Usuario" required>
+                <input type="password" id="GetPass" placeholder="Contraseña" required>
+                <input type="submit" id="login" value="Iniciar Sesión" onclick="validacion()">
+                <div id="mensajeLogin"></div>
+            </form>
+        </div>
+        
+        <div class="formulario">
+            <h2>Crea tu Cuenta</h2>
+            <form action="#">
+                <input type="text" id="SetNombre" placeholder="Nombre" required>
+                
+                <input type="text" id="SetApellido" placeholder="Apellido" required>
+                
+                <input type="email" id="SetMail" placeholder="Correo Electronico" required>
+                
+                <input type="text" id="SetUsuario" placeholder="Usuario" required>
+
+                <input type="password" id="SetPassword" placeholder="Contraseña" required>
+                
+                <input type="submit" id="register" value="Registrarse" onclick="registro()" >
+            </form>
+        </div>
+        <div class="reset-password">
+            <a href="#">Olvide mi Contraseña?</a>
+        </div>
+    </div>
+    <script src="js/jquery-3.1.1.min.js"></script>    
+    <script src="js/main.js"></script>
 </body>
 </html>
