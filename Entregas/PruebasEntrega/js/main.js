@@ -113,7 +113,7 @@
            if (usr==usuario && pas==pass){
             //Envia mensaje a DIV con ID "mensajeLogin" en el documento
             document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-            window.location.href='https://juangralarg.github.io/CoderHouse/Entregas/PruebasEntrega/principal.html';//redirecciona a pagina. NO FUNCIONA AUN
+            window.location.href='principal.html';//redirecciona a pagina. NO FUNCIONA AUN
         }else{
             document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";
         }
