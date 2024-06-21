@@ -1,3 +1,6 @@
+/**
+ * CODIGO PARA TOGGLE ENTRE LOGIN Y REGISTRO
+ */
 $('.toggle').click(function(){
     $('.formulario').animate({
         height: "toggle",
@@ -6,26 +9,30 @@ $('.toggle').click(function(){
         opacity: 'toggle'
     }, "slow");
 });
+
 /**
  * FUNCION REGISTRO DE USUARIOS
  * @returns usuarios registrados
  */
-let registro = function () {
+let registro = function () {    
+    let registroUsuarios=[];
+
+    
     let nom=document.querySelector('#SetNombre').value;//
     let ape=document.querySelector('#SetApellido').value;//
     let mai=document.querySelector('#SetMail').value;//
     let usu=document.querySelector('#SetUsuario').value;//
     let pas=document.querySelector('#SetPassword').value;//
-    const datosU=[{
+    const datosU={
         nombre: nom,
         apellido: ape,
-        cedula: mai,
+        email: mai,
         usuario: usu,
         pass: pas
-    }]
-    
-      console.log(datosU);    
-return datosU;
+    }
+    registroUsuarios.push(datosU);
+      
+return registroUsuarios;
 }
   
 /**
@@ -41,14 +48,22 @@ let validacion = function(){
     let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
     let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
 
-    console.log("fuera del metodo "+usuario);
-    console.log("fuera del metodo "+pass);
+    console.log("Validado Usuario: "+usuario);
+    console.log("Validado Usuario: "+pass);
+    console.log(registro());
 
     if (usr==usuario && pas==pass){
         //Envia mensaje a DIV con ID "mensajeLogin" en el documento
         document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-        //window.location.replace('principal.html');//redirecciona a pagina. NO FUNCIONA AUN
+        window.location.href='https://juangralarg.github.io/CoderHouse/Entregas/PruebasEntrega/principal.html';//redirecciona a pagina. NO FUNCIONA AUN
     }else{
         document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";
     }
-};
+}
+
+let listadoUsuarios = function () {
+    let reg = registro();
+      console.log(reg)
+      
+
+}

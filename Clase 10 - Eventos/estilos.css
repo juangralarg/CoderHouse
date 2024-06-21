@@ -1,0 +1,53 @@
+html{
+    font-family: Tahoma;
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 100%;
+    color: #a6d6ef;
+    margin: 0;
+    background-color: #0f4c75;
+    box-sizing: border-box;
+} 
+/*  .divP{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0px;
+    border: 20px;
+    text-align: center; 
+}  */
+
+.PTitulo {
+    justify-content: center;
+    padding: 0px;
+    border: 20px;
+    text-align: center;
+    background-color: black;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size:150%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: auto;
+    border-radius: 35px 0px 35px 0px;
+}
+.PSubTitulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+    border: 20px;
+    text-align: center;
+    background-color: rgba(130, 127, 127, 0.62);
+    color: whitesmoke;
+    font-weight: bold;
+    font-size:150%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 90%;
+    border-radius: 35px 0px 35px 0px;
+}
