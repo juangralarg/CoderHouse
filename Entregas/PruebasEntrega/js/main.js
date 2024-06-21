@@ -40,8 +40,8 @@
           document.querySelector('#SetUsuario').reset();
           document.querySelector('#SetPassword').reset();
         
-            //Envia mensaje a DIV con ID "mensajeRegistro" en el documento
-            // document.querySelector('#SetPassword').innerText = "Usuario y password REGISTRADO";
+           //Envia mensaje a DIV con ID "mensajeRegistro" en el documento
+           document.querySelector('#SetPassword').innerText = "Usuario y password REGISTRADO";
         
         
         
@@ -96,28 +96,27 @@
          * FUNCION PARA VALIDACIONES USUARIO
          */
         let validacion = function(){
-            //Informacion del registro de Usuario
-            let reg = registro();
-            let{usuario, pass} = reg;
-            //let usuario = reg[0]["usuario"];
-            //let pass= reg[0]["pass"];
-            console.log(usuario);
-            console.log(pass);
+           
+           let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
+           let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
+
+           let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                  
+            let [[{ usuario, pass }]]= usuarios;
         
-            //Datos que ingresa usuario desde login page
-            let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
-            let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
-        
-            console.log("Validado Usuario: "+usuario);
-            console.log("Validado Usuario: "+pass);
-            console.log(registro());
-        
-            if (usr==usuario && pas==pass){
-                //Envia mensaje a DIV con ID "mensajeLogin" en el documento
-                document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-                window.location.href='https://juangralarg.github.io/CoderHouse/Entregas/PruebasEntrega/principal.html';//redirecciona a pagina. NO FUNCIONA AUN
-            }else{
-                document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";
-            }
+            // Imprime para corrobar los valores de usuario y pass
+            console.log('Usuario:', usuario); //
+            console.log('Contraseña:', pass); //
+           
+               
+
+           if (usr==usuario && pas==pass){
+            //Envia mensaje a DIV con ID "mensajeLogin" en el documento
+            document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
+            window.location.href='https://juangralarg.github.io/CoderHouse/Entregas/PruebasEntrega/principal.html';//redirecciona a pagina. NO FUNCIONA AUN
+        }else{
+            document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";
         }
-            
+
+        }
+    
