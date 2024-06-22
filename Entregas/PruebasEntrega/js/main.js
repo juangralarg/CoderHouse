@@ -4,6 +4,7 @@
  * FUNCION REGISTRO DE USUARIOS
  * @returns usuarios registrados
  */
+
         let registro = function () {    
 
             let nom=document.querySelector('#SetNombre').value;//
@@ -94,7 +95,7 @@
                 </form>
             </div>
         `;
-        
+        event.preventDefault()
         /*
         * OPERADOR TERNARIO
         */
@@ -115,22 +116,23 @@
            let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
 
            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion de USR y PASS
-                  
+           event.preventDefault()    
             let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores USR Y PASS
         
             // VARIFICACION: Imprime para corrobar los valores de usuario y pass
             console.log('Usuario:', usuario); //
             console.log('Contraseña:', pass); //
            
-               
 
            if (usr==usuario && pas==pass){
             //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
             document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-            window.location.href='./principal.html';//redirecciona a pagina. NO FUNCIONA AUN
-        }else{
-            document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";
-        }
+            
+            //localStorage.removeItem('usuarios');//boorar localstorage
+            console.log('LocalStorage borrado.');
+            window.location.href="./principal.html";//redirecciona a pagina. NO FUNCIONA AUN
+            }
+            else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
 
         }
     
