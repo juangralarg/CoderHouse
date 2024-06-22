@@ -53,7 +53,7 @@
          * EFECTO EN FORMULARIOS CON BOTONES
          */
         function mostrarLogin() {
-            
+            let docuLogin = document.getElementById('contenido');
             document.getElementById('contenido').innerHTML =`
                 <div id="formlogin">
                     <h2>Iniciar Sesión</h2>
@@ -66,15 +66,23 @@
                     </div>
             `;
             
-            document.getElementById('formlogin').style.display = 'block';
-            document.getElementById('formregistro').style.display = 'none';
-          }
+        /*
+        * OPERADOR TERNARIO
+        */
+            (docuLogin!=null)
+            ?document.getElementById('formlogin').style.display = 'block'
+            : document.getElementById('formregistro').style.display = 'none';
+          
+        
+        
+        }
         
         
         function mostrarRegistro() {
-        document.getElementById('contenido').innerHTML = `
-            
-            <div class="formregistro">
+        let docuRegister= document.getElementById('contenido');
+
+            document.getElementById('contenido').innerHTML = `            
+            <div id="formregistro">
                 <h2>Crea tu Cuenta</h2>
                 <form action="#">
                     <input type="text" id="SetNombre" placeholder="Nombre" required>
@@ -87,8 +95,14 @@
             </div>
         `;
         
-        document.getElementById('formuser').style.display = 'block';
-        document.getElementById('formregistro').style.display = 'none';
+        /*
+        * OPERADOR TERNARIO
+        */
+        (docuRegister!=null)
+        ? document.getElementById('formregistro').style.display = 'block'
+         :document.getElementById('formlogin').style.display = 'none';
+
+
         }
         
         
@@ -100,20 +114,20 @@
            let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
            let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
 
-           let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+           let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion de USR y PASS
                   
-            let [[{ usuario, pass }]]= usuarios;
+            let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores USR Y PASS
         
-            // Imprime para corrobar los valores de usuario y pass
+            // VARIFICACION: Imprime para corrobar los valores de usuario y pass
             console.log('Usuario:', usuario); //
             console.log('Contraseña:', pass); //
            
                
 
            if (usr==usuario && pas==pass){
-            //Envia mensaje a DIV con ID "mensajeLogin" en el documento
+            //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
             document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-            window.location.href='principal.html';//redirecciona a pagina. NO FUNCIONA AUN
+            window.location.href='./principal.html';//redirecciona a pagina. NO FUNCIONA AUN
         }else{
             document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";
         }
