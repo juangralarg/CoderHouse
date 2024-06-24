@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 100%;
+    color: #a6d6ef;
+    margin: 0;
+    background-color: #0f4c75;
+}
+#mensajeRegistro {
+    text-transform: uppercase;
+    font-family: 'Times New Roman';
+    color: greenyellow;
+}
+
+.formuser {
+      display: none;
+    }
+
+.btnLogin, .btnRegistro {
+    border: 5px solid #eeeff1; /*anchura, estilo y color borde*/
+    padding: 10px; /*espacio alrededor texto*/
+    background-color: #2e518b; /*color botón*/
+    color: #ffffff; /*color texto*/
+    text-decoration: none; /*decoración texto*/
+    text-transform: uppercase; /*capitalización texto*/
+    font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+    border-radius: 50px; /*bordes redondos*/
+    }
+
