@@ -17,6 +17,17 @@ body {
     background-color: #0f4c75;
 }
 
+header{
+    display: flex;
+}
+
+.logo{
+    display: flex;
+}
+
+.imglogo{
+    border-radius: 5px;
+}
 .contenedor-form {
     background: rgba(16, 0, 63, 0.7);
     max-width: 500px;

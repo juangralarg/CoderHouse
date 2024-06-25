@@ -130,7 +130,7 @@
             
             //localStorage.removeItem('usuarios');//boorar localstorage
             console.log('LocalStorage borrado.');
-            window.location.href="./principal.html";//redirecciona a pagina. NO FUNCIONA AUN
+            window.location.href="./views/carrito.html";//redirecciona a pagina. 
             }
             else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
 
