@@ -66,7 +66,7 @@
                     </form>
                     </div>
             `;
-            
+            event.preventDefault()
         /*
         * OPERADOR TERNARIO
         */
@@ -81,7 +81,7 @@
         
         function mostrarRegistro() {
         let docuRegister= document.getElementById('contenido');
-
+        
             document.getElementById('contenido').innerHTML = `            
             <div id="formregistro">
                 <h2>Crea tu Cuenta</h2>
@@ -130,7 +130,7 @@
             
             //localStorage.removeItem('usuarios');//boorar localstorage
             console.log('LocalStorage borrado.');
-            window.location.href="./principal.html";//redirecciona a pagina. NO FUNCIONA AUN
+            window.location.href="./carrito.html";//redirecciona a pagina. NO FUNCIONA AUN
             }
             else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
 
