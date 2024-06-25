@@ -52,19 +52,20 @@
         
         /**
          * EFECTO EN FORMULARIOS CON BOTONES
-         */
+         */ 
         function mostrarLogin() {
             let docuLogin = document.getElementById('contenido');
             document.getElementById('contenido').innerHTML =`
-                <div id="formlogin">
-                    <h2>Iniciar Sesión</h2>
-                    <form action="#">
-                            <input type="text" id="GetUsuario" placeholder="Usuario" required>
-                            <input type="password" id="GetPass" placeholder="Contraseña" required>
-                            <input type="submit" id="login" value="Iniciar Sesión" onclick="validacion()">
-                            <div id="mensajeLogin"></div>
-                    </form>
-                    </div>
+ <div id="formlogin"><img src="/img/logo.jpg" alt="Logo">
+                <BR><h2>Iniciar Sesión</h2>
+                <form class="formSubmit" action="#">
+                        <input type="text" id="GetUsuario" placeholder="Usuario" required>
+                        <input type="password" id="GetPass" placeholder="Contraseña" required>
+                        <input type="submit" id="login" value="Iniciar Sesión" onclick="validacion()">
+                        <div id="mensajeLogin"><BR></div>
+                </form>
+                <BR><BR><BR>No tienes Usuario? <button id="register" class="btnRegistro" onclick="mostrarRegistro()">Registro</button>
+            </div>
             `;
             
         /*
@@ -81,21 +82,23 @@
         
         function mostrarRegistro() {
         let docuRegister= document.getElementById('contenido');
-
+        event.preventDefault()
             document.getElementById('contenido').innerHTML = `            
-            <div id="formregistro">
-                <h2>Crea tu Cuenta</h2>
-                <form action="#">
+             <div id="formlogin"><img src="/img/logo.jpg" alt="Logo">
+                
+                <h2>Crea tu cuenta</h2>
+                <form class="formSubmit" action="#">
                     <input type="text" id="SetNombre" placeholder="Nombre" required>
                     <input type="text" id="SetApellido" placeholder="Apellido" required>
                     <input type="email" id="SetMail" placeholder="Correo Electronico" required>
                     <input type="text" id="SetUsuario" placeholder="Usuario" required>
                     <input type="password" id="SetPassword" placeholder="Contraseña" required>
-                    <input type="submit" id="register" value="Registrarse" onclick="registro()" >
+                    <input type="submit" id="register" value="Registrarse" onclick="registro()" ><BR>
                 </form>
+                Ya tienes usuario? <button id="login" class="btnLogin" onclick="mostrarLogin()">Login</button>
             </div>
         `;
-        event.preventDefault()
+        
         /*
         * OPERADOR TERNARIO
         */
@@ -111,28 +114,64 @@
          * FUNCION PARA VALIDACIONES USUARIO
          */
         let validacion = function(){
-           
+            event.preventDefault()
            let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
            let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
-
-           let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion de USR y PASS
-           event.preventDefault()    
-            let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores USR Y PASS
+           let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion del primer USR y PASS, si no hay valores retorna Array Vacio (derecha del OR)
+           let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores del primer USR Y PASS
         
+
+
             // VARIFICACION: Imprime para corrobar los valores de usuario y pass
-            console.log('Usuario:', usuario); //
-            console.log('Contraseña:', pass); //
+  /*           console.log('Usuario:', usuario); //
+            console.log('Contraseña:', pass); // */
            
 
-           if (usr==usuario && pas==pass){
-            //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
-            document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-            
-            //localStorage.removeItem('usuarios');//boorar localstorage
-            console.log('LocalStorage borrado.');
-            window.location.href="./views/carrito.html";//redirecciona a pagina. 
-            }
-            else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
+    // BUSQUEDA DE USUARIO
+    //console.log(pas);
+
+    // Variable para almacenar el usuario encontrado
+    let userEncontrado = null;
+    let passEncontrado = null;
+
+    // Recorrer los arrays dentro de usuarios para encontrar el objeto con clave 'usuario' igual a usr
+for (let i = 0; i < usuarios.length; i++) {
+    let usuarioArray = usuarios[i];
+    // Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (index 0)
+    let usuarioObjeto = usuarioArray[0];
+    
+    if (usuarioObjeto && usuarioObjeto.usuario === usr) {
+        // Encontramos el usuario, almacenamos los valores encontrados
+        userEncontrado = usuarioObjeto;
+        passEncontrado = usuarioObjeto.pass;
+  
+        break; // sale del bucle una vez encontrado el usuario
+    }
+}
+
+
+    if (userEncontrado && userEncontrado.usuario === usr && passEncontrado === pas){
+
+    //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
+    document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
+    
+    //localStorage.removeItem('usuarios');//boorrar localstorage
+    console.log('LocalStorage borrado.');
+    window.location.href="./carrito.html";//redirecciona a pagina.
+
+    } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
+
+
+
+
 
         }
-    
+
+
+
+
+
+
+
+
+

@@ -3,48 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Proyecto CoderHouse</title>
-    <link rel="stylesheet" href="./css/estilosMain.css">
-    <link rel="stylesheet" href="./css/estilosMain.css">
-    <script src="./js/jquery-3.1.1.min.js"></script> 
+    <link rel="stylesheet" href="../../css/estilosMain.css">
+    <script src="js/jquery-3.1.1.min.js"></script> 
     <script src="./js/main.js"></script>
 </head>
 <body>
     
     <div class="formContainer">
-        <div class="menu">
-         <button id="login" class="btnLogin" onclick="mostrarLogin()">   Login   </button>
-         <button id="register" class="btnRegistro" onclick="mostrarRegistro()">Registro</button>
-        </div>
         <div id="contenido">
-
-            <!-- USADO PARA PUEBAS -->
-             
-            <!-- <div id="formlogin">
-                <h2>Iniciar Sesión</h2>
-                <form action="#">
+            <div id="formlogin"><img src="/img/logo.jpg" alt="Logo">
+                <BR><h2>Iniciar Sesión</h2>
+                <form class="formSubmit" action="#">
                         <input type="text" id="GetUsuario" placeholder="Usuario" required>
                         <input type="password" id="GetPass" placeholder="Contraseña" required>
                         <input type="submit" id="login" value="Iniciar Sesión" onclick="validacion()">
-                        <div id="mensajeLogin"></div>
+                        <div id="mensajeLogin"><BR></div>
                 </form>
-                </div>
-                     <div class="formregistro">
-                     <h2>Crea tu Cuenta</h2>
-                         <form action="#">
-                         <input type="text" id="SetNombre" placeholder="Nombre" required>
-                           <input type="text" id="SetApellido" placeholder="Apellido" required>
-                             <input type="email" id="SetMail" placeholder="Correo Electronico" required>
-                             <input type="text" id="SetUsuario" placeholder="Usuario" required>
-                             <input type="password" id="SetPassword" placeholder="Contraseña" required>
-                             <input type="submit" id="register" value="Registrarse" onclick="registro()" >
-                         </form>
-                         </div>
- -->
+                <BR><BR><BR>No tienes Usuario? <button id="register" class="btnRegistro" onclick="mostrarRegistro()">Registro</button>
+            </div>
         </div>    
     </div>
-
-
-
-
 </body>
 </html>
