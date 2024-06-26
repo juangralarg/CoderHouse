@@ -119,7 +119,7 @@
            let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
            let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion del primer USR y PASS, si no hay valores retorna Array Vacio (derecha del OR)
-           event.preventDefault()
+         
            let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores del primer USR Y PASS
         
 
@@ -134,7 +134,7 @@
             let userEncontrado = null;
             let passEncontrado = null;
 
-    // Recorrer los arrays dentro de usuarios para encontrar el objeto con clave 'usuario' igual a usr
+    // Recorrer Arrays dentro de localStorage usuarios para encontrar el objeto con clave 'usuario' 
             for (let i = 0; i < usuarios.length; i++) {
                 let usuarioArray = usuarios[i];
                 // Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (index 0)
