@@ -118,9 +118,9 @@
            let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
            let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion del primer USR y PASS, si no hay valores retorna Array Vacio (derecha del OR)
+           
            let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores del primer USR Y PASS
         
-
 
             // VARIFICACION: Imprime para corrobar los valores de usuario y pass
 
@@ -130,39 +130,35 @@
 
     // BUSQUEDA DE USUARIO
       // Variable para almacenar el usuario encontrado
-    let userEncontrado = null;
-    let passEncontrado = null;
+            let userEncontrado = null;
+            let passEncontrado = null;
 
     // Recorrer los arrays dentro de usuarios para encontrar el objeto con clave 'usuario' igual a usr
-for (let i = 0; i < usuarios.length; i++) {
-    let usuarioArray = usuarios[i];
-    // Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (index 0)
-    let usuarioObjeto = usuarioArray[0];
-    
-    if (usuarioObjeto && usuarioObjeto.usuario === usr) {
-        // Encontramos el usuario, almacenamos los valores encontrados
-        userEncontrado = usuarioObjeto;
-        passEncontrado = usuarioObjeto.pass;
-  
-        break; // sale del bucle una vez encontrado el usuario
-    }
-}
+            for (let i = 0; i < usuarios.length; i++) {
+                let usuarioArray = usuarios[i];
+                // Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (index 0)
+                let usuarioObjeto = usuarioArray[0];
+                
+                if (usuarioObjeto && usuarioObjeto.usuario === usr) {
+                    // Encontramos el usuario, almacenamos los valores encontrados
+                    userEncontrado = usuarioObjeto;
+                    passEncontrado = usuarioObjeto.pass;
+            
+                    break; // sale del bucle una vez encontrado el usuario
+                }
+            }
 
 
-    if (userEncontrado && userEncontrado.usuario === usr && passEncontrado === pas){
+            if (userEncontrado && userEncontrado.usuario === usr && passEncontrado === pas){
 
-    //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
-    document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-    
-    //localStorage.removeItem('usuarios');//boorrar localstorage
-    console.log('LocalStorage borrado.');
-    window.location.href="./src/views/carrito.html";//redirecciona a pagina.
+            //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
+            document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
+            
+            //localStorage.removeItem('usuarios');//boorrar localstorage
+            console.log('LocalStorage borrado.');
+            window.location.href="./src/views/carrito.html";//redirecciona a pagina.
 
-    } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
-
-
-
-
+            } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
 
         }
 
