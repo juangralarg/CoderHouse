@@ -123,14 +123,13 @@
 
 
             // VARIFICACION: Imprime para corrobar los valores de usuario y pass
-  /*           console.log('Usuario:', usuario); //
-            console.log('Contraseña:', pass); // */
+
+                        /*console.log('Usuario:', usuario); //
+                            console.log('Contraseña:', pass); // */
            
 
     // BUSQUEDA DE USUARIO
-    //console.log(pas);
-
-    // Variable para almacenar el usuario encontrado
+      // Variable para almacenar el usuario encontrado
     let userEncontrado = null;
     let passEncontrado = null;
 
@@ -157,7 +156,7 @@ for (let i = 0; i < usuarios.length; i++) {
     
     //localStorage.removeItem('usuarios');//boorrar localstorage
     console.log('LocalStorage borrado.');
-    window.location.href="./carrito.html";//redirecciona a pagina.
+    window.location.href="./src/views/carrito.html";//redirecciona a pagina.
 
     } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
 
