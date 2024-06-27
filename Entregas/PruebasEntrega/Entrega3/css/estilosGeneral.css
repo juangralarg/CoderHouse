@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 100%;
+    color: #a6d6ef;
+    margin: 0;
+    background-color: #0f4c75;
+}
+
+.contenedor-form {
+    background: rgba(16, 0, 63, 0.7);
+    max-width: 500px;
+    width: 100%;
+    margin: 48px auto;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    /*padding: 40px;*/
+}
+
+
