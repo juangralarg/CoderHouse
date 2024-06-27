@@ -81,8 +81,8 @@
         
         
         function mostrarRegistro() {
-        let docuRegister= document.getElementById('contenido');
-        event.preventDefault()
+            let docuRegister= document.getElementById('contenido');
+            event.preventDefault()
             document.getElementById('contenido').innerHTML = `            
              <div id="formlogin"><img src="../Proyecto/img/logo.jpg" alt="Logo">
                 
@@ -97,73 +97,68 @@
                 </form>
                 Ya tienes usuario? <button id="login" class="btnLogin" onclick="mostrarLogin()">Login</button>
             </div>
-        `;
+            `;
         
         /*
         * OPERADOR TERNARIO
         */
-        (docuRegister!=null)
-        ? document.getElementById('formregistro').style.display = 'block'
-         :document.getElementById('formlogin').style.display = 'none';
+            (docuRegister!=null)
+            ? document.getElementById('formregistro').style.display = 'block'
+            :document.getElementById('formlogin').style.display = 'none';
 
 
         }
         
         
-        /**
-         * FUNCION PARA VALIDACIONES USUARIO
-         */
+/**
+ * FUNCION PARA VALIDACIONES USUARIO
+ */
         let validacion = function(){
             event.preventDefault()
-           let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
-           let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
-           let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion del primer USR y PASS, si no hay valores retorna Array Vacio (derecha del OR)
-           let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores del primer USR Y PASS
+            let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
+            let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion del primer USR y PASS, si no hay valores retorna Array Vacio (derecha del OR)
+            let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores del primer USR Y PASS
         
 
 
             // VARIFICACION: Imprime para corrobar los valores de usuario y pass
-  /*           console.log('Usuario:', usuario); //
-            console.log('Contraseña:', pass); // */
+            /*          console.log('Usuario:', usuario); //
+                        console.log('Contraseña:', pass); // */
            
 
-    // BUSQUEDA DE USUARIO
-    //console.log(pas);
-
-    // Variable para almacenar el usuario encontrado
-    let userEncontrado = null;
-    let passEncontrado = null;
-
-    // Recorrer los arrays dentro de usuarios para encontrar el objeto con clave 'usuario' igual a usr
-for (let i = 0; i < usuarios.length; i++) {
-    let usuarioArray = usuarios[i];
-    // Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (index 0)
-    let usuarioObjeto = usuarioArray[0];
-    
-    if (usuarioObjeto && usuarioObjeto.usuario === usr) {
-        // Encontramos el usuario, almacenamos los valores encontrados
-        userEncontrado = usuarioObjeto;
-        passEncontrado = usuarioObjeto.pass;
+        // BUSQUEDA DE USUARIO
   
-        break; // sale del bucle una vez encontrado el usuario
-    }
-}
+        // Variable para almacenar el usuario encontrado
+            let userEncontrado = null;
+            let passEncontrado = null;
+
+        // Recorrer los arrays dentro de usuarios para encontrar el objeto con clave 'usuario' igual a usr
+            for (let i = 0; i < usuarios.length; i++) {
+                let usuarioArray = usuarios[i];
+                // Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (index 0)
+                let usuarioObjeto = usuarioArray[0];
+                
+                if (usuarioObjeto && usuarioObjeto.usuario === usr) {
+                    // Encontramos el usuario, almacenamos los valores encontrados
+                    userEncontrado = usuarioObjeto;
+                    passEncontrado = usuarioObjeto.pass;
+            
+                    break; // sale del bucle una vez encontrado el usuario
+                }
+            }
 
 
-    if (userEncontrado && userEncontrado.usuario === usr && passEncontrado === pas){
+            if (userEncontrado && userEncontrado.usuario === usr && passEncontrado === pas && usr!=null&&usr!=''){
 
-    //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
-    document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-    
-    //localStorage.removeItem('usuarios');//boorrar localstorage
-    console.log('LocalStorage borrado.');
-    window.location.href="./src/views/carrito.html";//redirecciona a pagina.
+            //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
+            document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
+            
+            //localStorage.removeItem('usuarios');//boorrar localstorage
+            console.log('LocalStorage borrado.');
+            window.location.href="./src/views/carrito.html";//redirecciona a pagina.
 
-    } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
-
-
-
-
+            } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
 
         }
 
