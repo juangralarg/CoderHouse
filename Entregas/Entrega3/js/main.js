@@ -2,7 +2,7 @@
  
  /**
  * FUNCION REGISTRO DE USUARIOS
- * @returns usuarios registrados
+ *  usuarios registrados
  */
 
         let registro = function () {    
