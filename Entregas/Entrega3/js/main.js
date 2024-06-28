@@ -24,7 +24,12 @@
         /**
          * PRUEBAS JSON
          */       
-        /*    if (nom!=null && ape!=null && mai!=null && usu!=null && pas!= null){ */ 
+        if (!nom || !ape || !mai || !usu || !pas) {
+
+            //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
+        document.querySelector('#mensajeRegistro').innerText = "Falta ingresar algun dato.";
+
+        }else{
           // Obtener los datos existentes en localStorage (si existen)
           let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
         
@@ -43,10 +48,7 @@
         
            //Envia mensaje a DIV con ID "mensajeRegistro" en el documento
            document.querySelector('#SetPassword').innerText = "Usuario y password REGISTRADO";
-         /*   } else {
-            return NaN;
-           } */
-        
+        }        
         
         return registroUsuarios;
         }
@@ -58,7 +60,7 @@
         function mostrarLogin() {
             let docuLogin = document.getElementById('contenido');
             document.getElementById('contenido').innerHTML =`
-            <div id="formlogin"><img src="./img/logo.jpg" alt="Logo">
+            <div id="formlogin"><img src="/img/logo.jpg" alt="Logo">
                 <BR><h2>Iniciar Sesión</h2>
                 <form class="formSubmit" action="#">
                         <input type="text" id="GetUsuario" placeholder="Usuario" required>
@@ -86,7 +88,7 @@
         let docuRegister= document.getElementById('contenido');
         event.preventDefault()
             document.getElementById('contenido').innerHTML = `            
-             <div id="formlogin"><img src="./img/logo.jpg" alt="Logo">
+             <div id="formlogin"><img src="/img/logo.jpg" alt="Logo">
                 <h2>Crea tu cuenta</h2>
                 <form class="formSubmit" action="#">
                     <input type="text" id="SetNombre" placeholder="Nombre" required>
@@ -94,9 +96,10 @@
                     <input type="email" id="SetMail" placeholder="Correo Electronico" required>
                     <input type="text" id="SetUsuario" placeholder="Usuario" required>
                     <input type="password" id="SetPassword" placeholder="Contraseña" required>
-                    <input type="submit" id="register" value="Registrarse" onclick="registro()" ><BR>
+                    <input type="submit" id="register" value="Registrarse" onclick="registro()" >
+                    <div id="mensajeRegistro"><BR></div>
                 </form>
-                Ya tienes usuario? <button id="login" class="btnLogin" onclick="mostrarLogin()">Login</button>
+                <BR>Ya tienes usuario? <button id="login" class="btnLogin" onclick="mostrarLogin()">Login</button>
             </div>
         `;
         

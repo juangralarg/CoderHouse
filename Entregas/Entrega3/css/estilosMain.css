@@ -20,7 +20,7 @@ body {
     background-position: center center;
     background-attachment: fixed;
 }
-#mensajeLogin {
+#mensajeLogin, #mensajeRegistro {
     
     font-family: sans-serif;
     color:burlywood;
