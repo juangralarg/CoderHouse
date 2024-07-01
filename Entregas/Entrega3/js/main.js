@@ -60,7 +60,7 @@
         function mostrarLogin() {
             let docuLogin = document.getElementById('contenido');
             document.getElementById('contenido').innerHTML =`
-            <div id="formlogin"><img src="/img/logo.jpg" alt="Logo">
+            <div id="formlogin"><img src="./img/logo.jpg" alt="Logo">
                 <BR><h2>Iniciar Sesión</h2>
                 <form class="formSubmit" action="#">
                         <input type="text" id="GetUsuario" placeholder="Usuario" required>
@@ -88,7 +88,7 @@
         let docuRegister= document.getElementById('contenido');
         event.preventDefault()
             document.getElementById('contenido').innerHTML = `            
-             <div id="formlogin"><img src="/img/logo.jpg" alt="Logo">
+             <div id="formlogin"><img src="./img/logo.jpg" alt="Logo">
                 <h2>Crea tu cuenta</h2>
                 <form class="formSubmit" action="#">
                     <input type="text" id="SetNombre" placeholder="Nombre" required>
