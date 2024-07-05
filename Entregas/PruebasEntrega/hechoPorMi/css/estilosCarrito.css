@@ -1,0 +1,110 @@
+:root{
+    --color-acento: rgb(124, 20, 16);
+    --color-link: red;
+    --color-text: rgb(26, 23, 56);
+    --color-acento-claro: rgb(18, 18, 236);
+    --color-body: rgb(0,130,172);
+    --color-header:  whitesmoke;
+}
+html{
+    font-family: 'Lucida Sans', 'Lucida Grande';
+    background-color: var(--color-body);
+    }
+
+h3, p{
+        margin: 5px 0px;
+    }
+a{
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+button{
+    background-color: var(--color-body);
+    color: var(--color-header);
+    padding: 5px 10px;
+    border: unset;
+    border-radius: 6px;
+    cursor: pointer;
+}
+a:hover:not(carrito:hover){
+    color: var(--color-acento);
+    font-weight: bold;
+}
+header{
+    margin-bottom: 10px;
+}
+header nav{
+    display: flex; /* Nodo al lado del otro */
+    justify-content: space-between;
+    margin: 0 30px;
+    background-color: var(--color-header);
+}
+header nav div{
+    display: flex; /* Nodo al lado del otro */
+    align-items: center;
+    gap: 30px;/*  Separa iconos NAV */
+    position: relative; /* Relatico al numerode items del carrito (numero-carrito) */
+     
+}
+#numero-carrito{
+    background-color: var(--color-link);
+    border-radius: 100%; /* Redondea el fondo */
+    display:inline-block;
+    width: 20px;
+    line-height: 20px;
+    aspect-ratio: 1;
+    text-align: center;
+    color: whitesmoke;
+    position: absolute;
+    top:30%; /* Sube o baja en numero del carrito */
+    right: 26%; /* acomoda numero a la derecha del carrito */
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Hace que el texto este encima de la imagen del carrito */
+}
+#logoHeader{
+    height: 50px;
+}
+header nav img{
+    height: 40px;
+}
+
+body main{
+    margin-top: 50px;
+    
+}
+#item-producto{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    gap:20px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: auto;   
+}
+
+.tarjeta-producto{
+    box-shadow: 0 0 5px rgba(191, 191, 211, 0.863);
+    max-width: 300px;
+    padding: 15px;
+    background-color: var(--color-header);
+    transition: 200ms;
+}
+
+.tarjeta-producto:hover{
+    translate: 0 -6px;
+    background-color: var(--color-header);
+}
+.tarjeta-producto img {
+   aspect-ratio: 1.5em;;
+   height: 200px;
+    width: 250px;
+    object-fit:fill;
+    
+}
+
+footer{
+    justify-content: space-between;
+    
+    background-color: var(--color-header);
+}

@@ -11,14 +11,7 @@ body {
     background-color: #0f4c75;
     box-sizing: border-box;
 } 
-/*  .divP{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0px;
-    border: 20px;
-    text-align: center; 
-}  */
+
 
 .PTitulo {
     justify-content: center;
@@ -51,3 +44,4 @@ body {
     width: 90%;
     border-radius: 35px 0px 35px 0px;
 }
+
