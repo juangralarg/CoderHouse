@@ -4,4 +4,4 @@
  */
 
 fetch('productos.json')
-    .then((datos) => console.log(data));
+    .then((datos) => console.log(datos));
