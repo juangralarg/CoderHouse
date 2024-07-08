@@ -95,6 +95,7 @@ th{
     color:  var(--color-body);
     padding-top: 20px;
     padding-bottom: 20px; 
+    font-size: large;
 }
 
 
@@ -124,6 +125,7 @@ tr:last-child td:last-child {
 }
 td:last-child {
     font-weight: bolder;
+    font-size: large;
 }
 
 table,

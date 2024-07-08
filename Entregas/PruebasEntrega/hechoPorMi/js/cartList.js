@@ -29,12 +29,12 @@ productosAgrupados.forEach(producto => {
     
     productoElemento.innerHTML = `
        <tbody>
-            <TR>
+            <tr>
                 <TD> ${producto.nombre} </TD>
-                <TD> ${producto.precio}$ </TD>
+                <TD> ${producto.precio} $ </TD>
                 <TD> ${producto.cantidad} </TD>
-                <TD> ${total} </TD>
-            </TR>
+                <TD> ${total} $ </TD>
+            </tr>
          </tbody>
 
         
