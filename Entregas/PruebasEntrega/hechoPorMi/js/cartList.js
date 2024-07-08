@@ -28,19 +28,25 @@ productosAgrupados.forEach(producto => {
     const productoElemento = document.createElement('tr');
     
     productoElemento.innerHTML = `
-       
+       <tbody>
+            <TR>
                 <TD> ${producto.nombre} </TD>
                 <TD> ${producto.precio}$ </TD>
                 <TD> ${producto.cantidad} </TD>
                 <TD> ${total} </TD>
-                
-            <td class="cantidadBTN">
-                            <button onclick="bajaCantidad()"> BAJAR </button>
-                            <button onclick="subirCantidad()"> SUBIR </button>
-                        </td>
+            </TR>
+         </tbody>
+
         
     `;
     carritoContainer.appendChild(productoElemento);
 });
-
+/**
+ * Lo saue del inner de arriba:
+ * 
+ *             <td class="cantidadBTN">
+                            <button onclick="bajaCantidad()"> BAJAR </button>
+                            <button onclick="subirCantidad()"> SUBIR </button>
+                        </td>
+ */
 }

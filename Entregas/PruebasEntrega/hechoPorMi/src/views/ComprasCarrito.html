@@ -7,30 +7,35 @@
     <!-- <script defer src="../../js/cart.js"></script> -->
     <title>CARRITO DE COMPRAS</title>
 <body>
-    <header><div id="header">
-        <nav>
-            <div id="logoHeader"> <img src="../../img/logo.jpg" alt="Logo">
-                <a href="#"><img src="../../img/Configure002.png" alt="Modificaciones"></a>
-            </div>
-            <div>
-                <a href="#"><img src="../../img/busqueda.png" alt="Buscar"></a>
-                <a href="./carrito.html" id="carrito"><img src="../../img/carrito-de-compras.png" alt="Carrito"><span id="numero-carrito">0</span></a>
-                <a href="../../index.html"><img src="../../img/cerrar-sesion red.png" alt="LOGOUT"></a>
-            </div>
-        </nav>
-    </div></header>
+    <header>    
+        <div id="header">
+            <nav>
+                <div id="logoHeader"> <img src="../../img/logo.jpg" alt="Logo">
+                    <a href="#"><img src="../../img/Configure002.png" alt="Modificaciones"></a>
+                </div>
+                <div>
+                    <a href="#"><img src="../../img/busqueda.png" alt="Buscar"></a>
+                    <a href="./carrito.html" id="carrito"><img src="../../img/carrito-de-compras.png" alt="Carrito"><span id="numero-carrito">0</span></a>
+                    <a href="../../index.html"><img src="../../img/cerrar-sesion red.png" alt="LOGOUT"></a>
+                </div>
+            </nav>
+        </div>
+    </header> 
     <main>
         <h1>COMPRAS REALIZADAS</h1>
-        <TABLE>
-            <TR>
-                <TH> PRODUCTO</TH>
-                <TH> PRECIO </TH>
-                <TH> CANTIDAD </TH>
-                <TH> TOTAL </TH>
-                <TH> Poner/Sacar </TH>
-            </TR>
-            <DIV id="carrito-items"></DIV>
-        </TABLE>
+        <div class="tablediv">
+            <TABLE class="producto-tabla">
+                <Thead>
+                <Tr>
+                    <TH> PRODUCTO </TH>
+                    <TH> PRECIO </Th>
+                    <Th> CANTIDAD </Th>
+                    <Th> TOTAL </Th>
+                </Tr>
+            </Thead>
+            <tbody id="carrito-items"></tbody>           
+            </TABLE>
+        </div>
         
     </main>
 </body>

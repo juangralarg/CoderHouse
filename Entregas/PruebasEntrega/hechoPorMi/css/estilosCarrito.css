@@ -73,6 +73,66 @@ body main{
     margin-top: 50px;
     
 }
+
+h1 {
+    text-align: center;
+}
+
+table {  
+    margin: 0 auto;/* Para centrar usamos "auto" en la alineación horizontal */
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+    
+}
+
+#tablediv{
+    border-radius: 10px 0px 10px 0px ;
+}
+
+th{
+    background-color:var(--color-header);
+    color:  var(--color-body);
+    padding-top: 20px;
+    padding-bottom: 20px; 
+}
+
+
+
+tr:nth-child(odd) {
+    background-color: #e1e0f0;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+th:first-child { 
+    border-top-left-radius: 25px; 
+}
+
+/* th:last-child {   
+    border-top-right-radius: 10px; 
+} */
+/* tr:last-child td:first-child { 
+    border-bottom-left-radius: 10px; 
+} */
+
+tr:last-child td:last-child { 
+    border-bottom-right-radius: 25px; 
+}
+td:last-child {
+    font-weight: bolder;
+}
+
+table,
+th,td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
 #item-producto{
     justify-content: center;
     text-align: center;
@@ -103,8 +163,8 @@ body main{
     
 }
 
+
 footer{
     justify-content: space-between;
-    
     background-color: var(--color-header);
 }
