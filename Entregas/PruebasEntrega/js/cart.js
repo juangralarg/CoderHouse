@@ -3,9 +3,9 @@ const numeroCarrito = document.getElementById("numero-carrito");
 
 
 document.addEventListener('DOMContentLoaded', () => {
- 
+ //event.preventDefault();
   ListarProductosStock();
-  //listarProductosCarrito();
+
 });
 
 /**
@@ -36,9 +36,9 @@ function ListarProductosStock(){
  */
 
   function agregarAlCarrito(producto) {
-    event.preventDefault();
+ 
     nroItemsCarrito();
-    let carrito = obtenerCarritoDeLocalStorage();
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carrito.push(producto);
     localStorage.setItem('carrito', JSON.stringify(carrito)); //Guardar carrito en localStorage
     actualizarNumeroCarrito(carrito.length);
