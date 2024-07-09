@@ -4,7 +4,7 @@ listarProductosCarrito();
 function listarProductosCarrito(){
   
 // Obtener el carrito desde localStorage
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+let carrito = obtenerCarritoDeLocalStorage()
 
 // Agrupar los productos por id
 let productosAgrupados = carrito.reduce((acc, producto) => {
@@ -34,6 +34,9 @@ productosAgrupados.forEach(producto => {
                 <TD> ${producto.precio} $ </TD>
                 <TD> ${producto.cantidad} </TD>
                 <TD> ${total} $ </TD>
+                <td> <button onclick="cambiarCantidad(${producto.id},-1)"> - </button> 
+                 <button onclick="cambiarCantidad(${producto.id},1)"> + </button> 
+            </td>
             </tr>
          </tbody>
 
@@ -43,20 +46,25 @@ productosAgrupados.forEach(producto => {
 });
 totalCarrito()
 }
-/**
- * Lo saue del inner de arriba:
- * 
- *             <td class="cantidadBTN">
-                            <button onclick="bajaCantidad()"> BAJAR </button>
-                            <button onclick="subirCantidad()"> SUBIR </button>
-                        </td>
- */
 
+/**
+ * INSTRUCCIONES AL TERMINAR LA COMPRA
+ */
+function comprarCarrito(){
+    let carrito = obtenerCarritoDeLocalStorage()
+    let total = 0;
+    let IVA=22;
+carrito.forEach(item => {
+    total += item.precio;
+});
+let aPagar=total+(total*(IVA)/100);
+console.log(aPagar);
+}
 
 
 function totalCarrito(){
     let IVA=22;
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let carrito = obtenerCarritoDeLocalStorage()
 
     // Obtener el contenedor del carrito
 const carritoTtoal = document.getElementById('carrito-values');
@@ -84,3 +92,31 @@ carritoTtoal.innerHTML = '';
 carritoTtoal.appendChild(tabla);
 
 }//FIN DEL SCRIPT
+
+
+
+// Función para cambiar la cantidad de un producto en el carrito
+function cambiarCantidad(productId, cambio) {
+    // Obtener el carrito desde localStorage
+    let carrito = obtenerCarritoDeLocalStorage()
+
+    // Encontrar el producto en el carrito y cambiar su cantidad
+    let productoIndex = carrito.findIndex(producto => producto.id === productId);
+
+    if (productoIndex !== -1) {
+        if (cambio > 0 || (cambio < 0 && carrito[productoIndex].cantidad > 1)) {
+            carrito[productoIndex].cantidad = (carrito[productoIndex].cantidad || 1) + cambio;
+        }
+        
+        // Si la cantidad es 0 o menor, eliminar el producto del carrito
+        if (carrito[productoIndex].cantidad <= 0) {
+            carrito.splice(productoIndex, 1);
+        }
+
+        // Guardar el carrito actualizado en localStorage
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+
+        // Actualizar la vista del carrito
+        listarProductosCarrito();
+    }
+}
