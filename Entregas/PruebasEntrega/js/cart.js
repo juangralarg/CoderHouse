@@ -3,9 +3,9 @@ const numeroCarrito = document.getElementById("numero-carrito");
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
+ 
   ListarProductosStock();
-  listarProductosCarrito();
+  //listarProductosCarrito();
 });
 
 /**
@@ -36,10 +36,11 @@ function ListarProductosStock(){
  */
 
   function agregarAlCarrito(producto) {
+    event.preventDefault();
     nroItemsCarrito();
     let carrito = obtenerCarritoDeLocalStorage();
     carrito.push(producto);
-    guardarCarritoEnLocalStorage(carrito);
+    localStorage.setItem('carrito', JSON.stringify(carrito)); //Guardar carrito en localStorage
     actualizarNumeroCarrito(carrito.length);
   }
   
@@ -48,9 +49,6 @@ function ListarProductosStock(){
     return carrito 
   }
   
-  function guardarCarritoEnLocalStorage(carrito) {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-  }
 
   function cargarCarritoDesdeLocalStorage() {
     let carrito = obtenerCarritoDeLocalStorage();
@@ -58,6 +56,7 @@ function ListarProductosStock(){
   }
   
   function actualizarNumeroCarrito(cantidad) {
+    event.preventDefault()
     numeroCarrito.textContent = cantidad;
   }
 
@@ -71,46 +70,3 @@ function nroItemsCarrito(){
   
 }
 
-function listarProductosCarrito(){
-  
-  // Obtener el carrito desde localStorage
-  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-  
-  // Agrupar los productos por id
-  let productosAgrupados = carrito.reduce((acc, producto) => {
-      if (!acc[producto.id]) {
-          acc[producto.id] = { ...producto, cantidad: 0 };
-      }
-      acc[producto.id].cantidad += 1;
-      return acc;
-  }, {});
-  
-  // Convertir el objeto en un array 
-  productosAgrupados = Object.values(productosAgrupados);
-  
-  // Obtener el contenedor del carrito
-  const carritoContainer = document.getElementById('carrito-items');
-  
-  // Mostrar los productos agrupados en el contenedor
-  productosAgrupados.forEach(producto => {
-  
-      const total = producto.precio*producto.cantidad;
-      const productoElemento = document.createElement('tr');
-      
-      productoElemento.innerHTML = `
-         
-                  <TD> ${producto.nombre} </TD>
-                  <TD> ${producto.precio}$ </TD>
-                  <TD> ${producto.cantidad} </TD>
-                  <TD> ${total} </TD>
-                  
-              <td class="cantidadBTN">
-                              <button onclick="bajaCantidad()"> BAJAR </button>
-                              <button onclick="subirCantidad()"> SUBIR </button>
-                          </td>
-          
-      `;
-      carritoContainer.appendChild(productoElemento);
-  });
-
-}
