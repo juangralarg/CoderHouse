@@ -3,9 +3,9 @@ const numeroCarrito = document.getElementById("numero-carrito");
 
 
 document.addEventListener('DOMContentLoaded', () => {
- //event.preventDefault();
+ 
   ListarProductosStock();
-
+  cargarCarritoDesdeLocalStorage();
 });
 
 /**
@@ -36,9 +36,9 @@ function ListarProductosStock(){
  */
 
   function agregarAlCarrito(producto) {
- 
+    event.preventDefault();
     nroItemsCarrito();
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let carrito = obtenerCarritoDeLocalStorage();
     carrito.push(producto);
     localStorage.setItem('carrito', JSON.stringify(carrito)); //Guardar carrito en localStorage
     actualizarNumeroCarrito(carrito.length);
@@ -66,6 +66,7 @@ function ListarProductosStock(){
  * NUMERO DE ITEMS EN EL CARRITO
  */
 function nroItemsCarrito(){
+  let carrito= obtenerCarritoDeLocalStorage();
     numeroCarrito.innerHTML=`${carrito.length}`;
   
 }

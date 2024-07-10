@@ -2,7 +2,7 @@
       "id":1,
       "nombre": "Notebook",
       "img": "../../img/Notebook001.png",
-      "precio": 11
+      "precio": 1900
     },
     {
       "id":2,
@@ -15,17 +15,17 @@
       "id":3,
       "nombre": "Router",
       "img": "../../img/Notebook001.png",
-      "precio": 33
+      "precio": 120
     },
     {
       "id":4,
       "nombre": "Teclado",
       "img": "../../img/Notebook001.png",
-      "precio": 44
+      "precio": 10
     },
     {
       "id":5,
-      "nombre": "SillaGamer",
+      "nombre": "Silla Gamer",
       "img": "../../img/Notebook001.png",
       "precio": 55
     },
@@ -33,6 +33,21 @@
       "id":6,
       "nombre": "Auriculares",
       "img": "../../img/Notebook001.png",
-      "precio": 66
+      "precio": 200
+    },
+    {
+      "id":7,
+      "nombre": "Celular",
+      "precio": 1500
+    },
+    {
+      "id":8,
+      "nombre": "Disco Vinilo",
+      "precio": 150
+    },
+    {
+      "id":9,
+      "nombre": "Guitarra Electrica",
+      "precio": 2000
     }
 ]

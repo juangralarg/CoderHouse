@@ -6,7 +6,7 @@
  */
 
         let registro = function () {    
-            event.preventDefault()
+            //event.preventDefault()
             let nom=document.querySelector('#SetNombre').value;//
             let ape=document.querySelector('#SetApellido').value;//
             let mai=document.querySelector('#SetMail').value;//
@@ -36,15 +36,19 @@
             // Guardar el array actualizado en localStorage
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
             
+            mensajeRegistro();
             // Limpiar los campos del formulario
-            document.querySelector('#SetNombre').reset();
+/*             document.querySelector('#SetNombre').reset();
             document.querySelector('#SetApellido').reset();
             document.querySelector('#SetMail').reset();
             document.querySelector('#SetUsuario').reset();
-            document.querySelector('#SetPassword').reset();
+            document.querySelector('#SetPassword').reset(); */
             
             //Envia mensaje a DIV con ID "mensajeRegistro" en el documento
-            document.querySelector('#SetPassword').innerText = "Usuario y password REGISTRADO";
+           // document.querySelector('#SetPassword').innerText = "Usuario y password REGISTRADO";
+           //LE AGREGO EFECTO USANDO SWEETALERT
+                 
+
             }        
         
         return registroUsuarios;
@@ -83,7 +87,7 @@
         
         function mostrarRegistro() {
         let docuRegister= document.getElementById('contenido');
-        event.preventDefault()
+       
             document.getElementById('contenido').innerHTML = `            
              <div id="formlogin"><img src="./img/logo.jpg" alt="Logo">
                 <h2>Crea tu cuenta</h2>
@@ -119,51 +123,56 @@
            let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
            let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion del primer USR y PASS, si no hay valores retorna Array Vacio (derecha del OR)
-           let [[{ usuario, pass }]]= usuarios; //Desestructura informacion para tomar valores del primer USR Y PASS
+           
         
-
-
-            // VARIFICACION: Imprime para corrobar los valores de usuario y pass
-  /*           console.log('Usuario:', usuario); //
-            console.log('Contraseña:', pass); // */
+// VARIFICACION: Imprime para corrobar los valores de usuario y pass
+  /*console.log('Usuario:', usuario); //
+    console.log('Contraseña:', pass); // */
            
 
-    // BUSQUEDA DE USUARIO 
-   
-    // Variable para almacenar el usuario encontrado
-        let userEncontrado = null;
-        let passEncontrado = null;
+    /**
+     * BUSQUEDA DE USUARIO 
+   */
 
-    // Recorrer los arrays dentro de usuarios para encontrar el objeto con clave 'usuario' igual a usr
-        for (let i = 0; i < usuarios.length; i++) {
+    let userEncontrado = null;
+    let passEncontrado = null;
+        for (let i = 0; i < usuarios.length; i++) {// Recorrer los arrays dentro de usuarios para encontrar el objeto con clave 'usuario' igual a usr
             let usuarioArray = usuarios[i];
-            // Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (indice 0)
-            let usuarioObjeto = usuarioArray[0];
+            let usuarioObjeto = usuarioArray[0];// Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (indice 0)
             
             if (usuarioObjeto && usuarioObjeto.usuario === usr) {
-                // Encontramos el usuario, almacenamos los valores encontrados
-                userEncontrado = usuarioObjeto;
+                userEncontrado = usuarioObjeto;// Encontramos el usuario, almacenamos los valores encontrados
                 passEncontrado = usuarioObjeto.pass;
-        
                 break; // sale del bucle una vez encontrado el usuario
             }
         }
 
-
         if (userEncontrado && userEncontrado.usuario === usr && passEncontrado === pas && usr!=null&&usr!=''){
+            
+            document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";//Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
+            window.location.href="./src/views/carrito.html";//redirecciona a pagina.
+            } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
 
-        //Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
-        document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";
-        //localStorage.setItem("user", userEncontrado.usuario);//Prueba guardar un dato en otra Key
-        //localStorage.removeItem('usuarios');//boorrar localstorage
-        //console.log('LocalStorage borrado.');
-        window.location.href="./src/views/carrito.html";//redirecciona a pagina.
+    }
 
-        } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
-
-    
-        
-
+    function mensajeRegistro() {
+        event.preventDefault()
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        let [[{usuario}]]= usuarios; //Destructuring para tomar informacion valores 
+               
+            Swal.fire({
+            title: `Bienvenido  ${usuario} \n ¡Registro Exitoso!`,
+            text: 'Presiona OK para continuar .',
+            imageUrl: "./img/logo.jpg",
+            imageWidth: 300,
+            imageHeight: 100,
+            imageAlt: "Custom image",
+            confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'index.html'; // Redirige a la página index.html
+            }
+        });
 
     }
         

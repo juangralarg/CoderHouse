@@ -5,7 +5,9 @@
     --color-acento-claro: rgb(18, 18, 236);
     --color-body: rgb(0,130,172);
     --color-header:  whitesmoke;
+    --color-btn-cancel: rgb(197, 82, 36);
 }
+
 html{
     font-family: 'Lucida Sans', 'Lucida Grande';
     background-color: var(--color-body);
@@ -18,7 +20,23 @@ a{
     text-decoration: none;
     color: var(--color-text);
 }
+.swal2-confirm {
+    background-color: var(--color-body);
+    color: var(--color-header);
+    padding: 15px 50px;
+    border: unset;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
+.swal2-cancel {
+    background-color: var(--color-btn-cancel);
+    color: var(--color-header);
+    padding: 15px 50px;
+    border: unset;
+    border-radius: 6px;
+    cursor: pointer;
+}
 .button-buy {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
@@ -38,6 +56,8 @@ a{
     cursor: pointer;
 
 }
+
+
 a:hover:not(carrito:hover){
     color: var(--color-acento);
     font-weight: bold;
@@ -87,6 +107,7 @@ body main{
 
 h1 {
     text-align: center;
+    color: var(--color-header);
 }
 
 table {  

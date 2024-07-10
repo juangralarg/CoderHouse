@@ -1,19 +1,21 @@
 
+
 listarProductosCarrito();
+obtenerCarritoDeLocalStorage();
 
 function listarProductosCarrito(){
   
     let carrito = obtenerCarritoDeLocalStorage() // Obtener el carrito desde localStorage. En cart.js
-    
     let productosAgrupados = carrito.reduce((agrupar, producto) => {// Agrupar los productos por id
-        if (!agrupar[producto.id]) {
+        
+    if (!agrupar[producto.id]) {
             agrupar[producto.id] = { ...producto, cantidad: 0 };
         }
         agrupar[producto.id].cantidad += 1;
         return agrupar;
         }, {});
 
-        productosAgrupados = Object.values(productosAgrupados);// Convertir el objeto en un array 
+    productosAgrupados = Object.values(productosAgrupados);// Convertir el objeto en un array 
 
     const carritoContainer = document.getElementById('carrito-items');// Obtener el contenedor del carrito
 
@@ -59,10 +61,12 @@ function obtenerCarritoDeLocalStorage() {
     return carrito 
   }
 
+
 /**
  * INSTRUCCIONES AL TERMINAR LA COMPRA
  */
 function comprarCarrito(){
+    event.preventDefault();
     let carrito = obtenerCarritoDeLocalStorage()
     let total = 0;
     let IVA=22;
@@ -71,11 +75,14 @@ function comprarCarrito(){
         total += item.precio;});
 
     let aPagar=total+(total*(IVA)/100);
+
+
         console.log(aPagar);//Verificacion valores
 }
 
 
 function totalCarrito(){
+    
     let IVA=22;
     let carrito = obtenerCarritoDeLocalStorage()
     const carritoTtoal = document.getElementById('carrito-values');// Obtener el contenedor del carrito
@@ -84,16 +91,18 @@ function totalCarrito(){
     let total = 0;
         carrito.forEach(item => {
             total += item.precio; });
+
 if (carrito !=0 ){
     const tabla = document.createElement('tr');
+    let itemsCarrito = carrito.length;
     let aPagarSinRedondear=(total+(total*(IVA)/100));
     let aPagar= aPagarSinRedondear.toFixed(2);//DEVUELVE EN FORMATO STRING
         tabla.innerHTML = `
                 <tbody>
                     <Tr>
-                        <Td> ${total} </Td>
-                        <Td> ${IVA}% </Td>
-                        <Td>   </Td>
+                        <Td> ${itemsCarrito} </Td>
+                        <Td>  ${total}</Td>
+                        <Td>  ${IVA}% </Td>
                         <Td> ${aPagar}  </Td>
                     </Tr>
                 </tbody>
@@ -116,6 +125,7 @@ carritoTtoal.appendChild(tabla);
         
 
 function borrarItem(id){
+    event.preventDefault();
     let carrito = localStorage.getItem('carrito');
     if (carrito){
         carrito=JSON.parse(carrito);
@@ -127,17 +137,61 @@ function borrarItem(id){
 
             localStorage.setItem('carrito',JSON.stringify(carrito))
 
-            console.log(`Elemento eliminado con ID: ${id}`);
-            location.reload()
+            //console.log(`Elemento eliminado con ID: ${id}`);
+            location.reload();
         } else {
-            console.log(`No s eencontro el id: ${id}`);
-            location.reload()
+            //console.log(`No s eencontro el id: ${id}`);
+            location.reload();
         }; 
         
         }else {
-            console.log(`No exite elemento`);
-            location.reload()
+            //console.log(`No exite elemento`);
+            location.reload();
         }
-    }//FIN DEL SCRIPT
+    }
+    
+    /*
+    * ALERTAS USANDO SWAL
+    */
 
+    function alertaLogout() {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: "btn btn-success",
+              cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+          });
+          swalWithBootstrapButtons.fire({
+            title: "LOGOUT",
+            text: "Desea Salir del sistema?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            confirmButtonColor: "#0082AC",
+            cancelButtonText: "No",
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+              swalWithBootstrapButtons.fire({
+                title: "Gracias",
+                text: "Vuelva pronto",
+                icon: "success"
+              });
+              {
+                window.location.href = '../../index.html';
+            }
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire({
+                title: "Logout cancelado",
+                text: "Puede seguir comprando",
+                icon: "error"
+              });
+            }
+          });
+    }
+    //FIN DEL SCRIPT
    
