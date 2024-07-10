@@ -44,9 +44,7 @@
             document.querySelector('#SetUsuario').reset();
             document.querySelector('#SetPassword').reset(); */
             
-            //Envia mensaje a DIV con ID "mensajeRegistro" en el documento
-           // document.querySelector('#SetPassword').innerText = "Usuario y password REGISTRADO";
-           //LE AGREGO EFECTO USANDO SWEETALERT
+
                  
 
             }        
