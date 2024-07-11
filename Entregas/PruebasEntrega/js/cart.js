@@ -4,8 +4,12 @@ const numeroCarrito = document.getElementById("numero-carrito");
 
 document.addEventListener('DOMContentLoaded', () => {
  
-  ListarProductosStock();
-  cargarCarritoDesdeLocalStorage();
+  if (contenedorProductos) {
+    ListarProductosStock();
+    cargarCarritoDesdeLocalStorage();
+  } /* else {
+    console.log("Elemento con ID 'item-producto' no encontrado en el DOM.");
+  } */
 });
 
 /**
@@ -20,11 +24,11 @@ function ListarProductosStock(){
               const nuevoProducto = document.createElement('div');
               nuevoProducto.classList.add('tarjeta-producto');
               nuevoProducto.innerHTML= `
-              <img src="../../img/producto${producto.id}.png" alt="${producto.nombre}">
-              <h3> ${producto.nombre} </h3>
-              <P> ${producto.precio} </P>
-              <button>Comprar</button>
-              `;
+                    <img src="../../img/producto${producto.id}.png" alt="${producto.nombre}">
+                    <h3> ${producto.nombre} </h3>
+                    <P> ${producto.precio} </P>
+                    <button>Comprar</button>
+                    `;
               contenedorProductos.appendChild(nuevoProducto);
               nuevoProducto.getElementsByTagName("button")[0].addEventListener("click", ()=>agregarAlCarrito(producto))
             });
@@ -42,6 +46,7 @@ function ListarProductosStock(){
     carrito.push(producto);
     localStorage.setItem('carrito', JSON.stringify(carrito)); //Guardar carrito en localStorage
     actualizarNumeroCarrito(carrito.length);
+    popupToastifyAddCart()
   }
   
   function obtenerCarritoDeLocalStorage() {
@@ -56,8 +61,9 @@ function ListarProductosStock(){
   }
   
   function actualizarNumeroCarrito(cantidad) {
-    event.preventDefault()
-    numeroCarrito.textContent = cantidad;
+    if (numeroCarrito) {  // Verifica si numeroCarrito no es null
+      numeroCarrito.textContent = cantidad;
+    } else{}
   }
 
 
@@ -66,8 +72,25 @@ function ListarProductosStock(){
  * NUMERO DE ITEMS EN EL CARRITO
  */
 function nroItemsCarrito(){
-  let carrito= obtenerCarritoDeLocalStorage();
-    numeroCarrito.innerHTML=`${carrito.length}`;
-  
+  if (numeroCarrito) {  // Verifica si numeroCarrito no es null
+    numeroCarrito.innerHTML = `${carrito.length}`;
+  }
 }
 
+function popupToastifyAddCart() {
+
+ Toastify({
+    text: `Producto agregado`,
+    className: "info",
+    duration: 2000,
+    oldestFirst: true,
+    escapeMarkup: true,
+    offset: {
+      x: 0, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+      y: 60 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+    },
+    style: {
+      background: "linear-gradient(to right,#0082ac, #013A66,#0082ac)",
+      
+    }
+  }).showToast();   }

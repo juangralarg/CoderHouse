@@ -76,10 +76,14 @@ function comprarCarrito(){
 
     let aPagar=total+(total*(IVA)/100);
 
-
-        console.log(aPagar);//Verificacion valores
+    popupSwalPago(aPagar); 
+        /* return aPagar; */
 }
 
+
+
+    
+      
 
 function totalCarrito(){
     
@@ -92,35 +96,36 @@ function totalCarrito(){
         carrito.forEach(item => {
             total += item.precio; });
 
-if (carrito !=0 ){
-    const tabla = document.createElement('tr');
-    let itemsCarrito = carrito.length;
-    let aPagarSinRedondear=(total+(total*(IVA)/100));
-    let aPagar= aPagarSinRedondear.toFixed(2);//DEVUELVE EN FORMATO STRING
-        tabla.innerHTML = `
+    if (carrito !=0 ){
+        const tabla = document.createElement('tr');
+        let itemsCarrito = carrito.length;
+        let aPagarSinRedondear=(total+(total*(IVA)/100));
+        let aPagar= aPagarSinRedondear.toFixed(2);//DEVUELVE EN FORMATO STRING
+            tabla.innerHTML = `
+                    <tbody>
+                        <Tr>
+                            <Td> ${itemsCarrito} </Td>
+                            <Td>  ${total}</Td>
+                            <Td>  ${IVA}% </Td>
+                            <Td> ${aPagar}  </Td>
+                        </Tr>
+                    </tbody>
+                `;
+    /*    carritoTtoal.innerHTML = '';//VERIFICACION DE VALORES */
+        carritoTtoal.appendChild(tabla);
+            } else {
+                const tabla = document.createElement('tr');
+                tabla.innerHTML = `
                 <tbody>
                     <Tr>
-                        <Td> ${itemsCarrito} </Td>
-                        <Td>  ${total}</Td>
-                        <Td>  ${IVA}% </Td>
-                        <Td> ${aPagar}  </Td>
+                        <td colspan="4">SIN ITEMS PARA SUMAR</td>
                     </Tr>
                 </tbody>
             `;
- /*    carritoTtoal.innerHTML = '';//VERIFICACION DE VALORES */
-    carritoTtoal.appendChild(tabla);
-        } else {
-            const tabla = document.createElement('tr');
-            tabla.innerHTML = `
-            <tbody>
-                <Tr>
-                    <td colspan="4">SIN ITEMS PARA SUMAR</td>
-                </Tr>
-            </tbody>
-        `;
 
-carritoTtoal.appendChild(tabla);
-        }
+    carritoTtoal.appendChild(tabla);
+            }
+  
 }
         
 
@@ -136,23 +141,22 @@ function borrarItem(id){
             carrito.splice(indice,1);
 
             localStorage.setItem('carrito',JSON.stringify(carrito))
-
-            //console.log(`Elemento eliminado con ID: ${id}`);
             location.reload();
-        } else {
-            //console.log(`No s eencontro el id: ${id}`);
-            location.reload();
-        }; 
-        
+           
+            } else {
+                //console.log(`No s eencontro el id: ${id}`);
+                location.reload();
+            }; 
+         
         }else {
             //console.log(`No exite elemento`);
             location.reload();
         }
     }
     
-    /*
-    * ALERTAS USANDO SWAL
-    */
+    /* **********************************
+    * ALERTAS USANDO SWEET ALERT
+    *************************************/
 
     function alertaLogout() {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -182,7 +186,6 @@ function borrarItem(id){
                 window.location.href = '../../index.html';
             }
             } else if (
-              /* Read more about handling dismissals below */
               result.dismiss === Swal.DismissReason.cancel
             ) {
               swalWithBootstrapButtons.fire({
@@ -193,5 +196,18 @@ function borrarItem(id){
             }
           });
     }
+/*
+ * POPUP PAGO TOTAL
+ */
+    function popupSwalPago(valor){
+        Swal.fire({
+        title: `Abonarà ${valor} $`,
+        width: 600,
+        padding: "3em",
+        color: "#716add",
+        background: "#fff url(/images/trees.png)"
+        });
+    }
+
     //FIN DEL SCRIPT
    

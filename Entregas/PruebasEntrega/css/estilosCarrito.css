@@ -3,8 +3,8 @@
     --color-link: red;
     --color-text: rgb(26, 23, 56);
     --color-acento-claro: rgb(18, 18, 236);
-    --color-body: rgb(0,130,172);
-    --color-header:  whitesmoke;
+    --color-body: #0082ac;
+    --color-header:  rgb(245, 245, 245);
     --color-btn-cancel: rgb(197, 82, 36);
 }
 
@@ -37,6 +37,48 @@ a{
     border-radius: 6px;
     cursor: pointer;
 }
+
+/* MOVIMIENTO IMAGEN CARRITO */
+@keyframes shake {
+/*     0%, 5% {
+        transform: translateX(0);
+    } */
+    10%, 20% {
+        transform: translateX(-3px);
+    }
+/*     10%, 40% {
+        transform: translateX(1px);
+    } */
+}
+
+/* .shake {
+    animation: shake 3s infinite;
+    animation-delay: 3s;
+} */
+
+@keyframes shakeRepeat {
+/*     0%, 100% {
+        transform: translateX(0);
+    } */
+/*     20%, 60% {
+        transform: translateX(-1px);
+    } */
+    40%, 80% {
+        transform: translateX(3px);
+        animation-delay: 2s;
+    }
+}
+
+.shake {
+    animation: shakeRepeat 0.5s steps(3, end) infinite;
+    animation-delay: 0s;
+}
+
+
+
+
+
+
 .button-buy {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
