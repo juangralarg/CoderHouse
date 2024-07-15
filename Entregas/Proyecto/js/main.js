@@ -1,0 +1,173 @@
+
+ 
+ /**
+ * FUNCION REGISTRO DE USUARIOS
+ * @returns usuarios registrados
+ */
+
+    let registro = function () {    
+
+    let nom=document.querySelector('#SetNombre').value;//
+    let ape=document.querySelector('#SetApellido').value;//
+    let mai=document.querySelector('#SetMail').value;//
+    let usu=document.querySelector('#SetUsuario').value;//
+    let pas=document.querySelector('#SetPassword').value;//
+            
+        const datosU=[{
+                nombre: nom,
+                apellido: ape,
+                email: mai,
+                usuario: usu,
+                pass: pas
+            }]
+            
+            //verificacion que usuario agregue datos en el registro
+
+        if (!nom || !ape || !mai || !usu || !pas) {
+
+            
+        document.querySelector('#mensajeRegistro').innerText = "Falta ingresar algun dato.";//Envia mensaje a <DIV> con ID "mensajeRegistro" en el documento
+        }else{
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];// Obtener los datos existentes en localStorage (si existen)
+            usuarios.push(datosU);// Agregar el nuevo usuario al array de usuarios datosU
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));// Guardar el array actualizado en localStorage
+            mensajeRegistro();
+
+            // Limpiar los campos del formulario
+
+            /* document.querySelector('#SetNombre').reset();
+            document.querySelector('#SetApellido').reset();
+            document.querySelector('#SetMail').reset();
+            document.querySelector('#SetUsuario').reset();
+            document.querySelector('#SetPassword').reset(); */
+        }        
+        return registroUsuarios;
+    }
+        
+        
+/**
+ * EFECTO EN FORMULARIOS CON BOTONES
+ */ 
+    function mostrarLogin() {
+        let docuLogin = document.getElementById('contenido');
+        document.getElementById('contenido').innerHTML =`
+        <div id="formlogin"><img src="./img/logo.jpg" alt="Logo">
+            <BR><h2>Iniciar Sesión</h2>
+            <form class="formSubmit" action="#">
+                    <input type="text" id="GetUsuario" placeholder="Usuario" required>
+                    <input type="password" id="GetPass" placeholder="Contraseña" required>
+                    <input type="submit" id="login" value="Iniciar Sesión" onclick="validacion()">
+                    <div id="mensajeLogin"><BR></div>
+            </form>
+            <BR><BR><BR>No tienes Usuario? <button id="register" class="btnRegistro" onclick="mostrarRegistro()">Registro</button>
+        </div>
+        `;
+        
+    /*
+    * OPERADOR TERNARIO
+    */
+        (docuLogin!=null)
+        ?document.getElementById('formlogin').style.display = 'block'
+        : document.getElementById('formregistro').style.display = 'none';
+    }
+    
+    
+    function mostrarRegistro() {
+    let docuRegister= document.getElementById('contenido');
+    
+        document.getElementById('contenido').innerHTML = `            
+            <div id="formlogin"><img src="./img/logo.jpg" alt="Logo">
+            <h2>Crea tu cuenta</h2>
+            <form class="formSubmit" action="#">
+                <input type="text" id="SetNombre" placeholder="Nombre" required>
+                <input type="text" id="SetApellido" placeholder="Apellido" required>
+                <input type="email" id="SetMail" placeholder="Correo Electronico" required>
+                <input type="text" id="SetUsuario" placeholder="Usuario" required>
+                <input type="password" id="SetPassword" placeholder="Contraseña" required>
+                <input type="submit" id="register" value="Registrarse" onclick="registro()" >
+                <div id="mensajeRegistro"><BR></div>
+            </form>
+            <BR>Ya tienes usuario? <button id="login" class="btnLogin" onclick="mostrarLogin()">Login</button>
+        </div>
+    `;
+    
+
+    (docuRegister!=null)
+    ? document.getElementById('formregistro').style.display = 'block'
+        :document.getElementById('formlogin').style.display = 'none';
+    }
+    
+    
+/**
+ * FUNCION PARA VALIDACIONES USUARIO
+ */
+    let validacion = function(){
+        event.preventDefault()
+        let usr=document.querySelector('#GetUsuario').value;//Toma valor ingresado en campo Usuario
+        let pas=document.querySelector('#GetPass').value;//Toma valor ingresado en campo PAssword
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];//Lee localstorage para tomar informacion del primer USR y PASS, si no hay valores retorna Array Vacio (derecha del OR)
+        
+    
+    // VARIFICACION: Imprime para corrobar los valores de usuario y pass
+    /*console.log('Usuario:', usuario); //
+    console.log('Contraseña:', pass); // */
+        
+
+    /**
+     * BUSQUEDA DE USUARIO 
+     */
+
+    let userEncontrado = null;
+    let passEncontrado = null;
+        for (let i = 0; i < usuarios.length; i++) {// Recorrer los arrays dentro de usuarios para encontrar el objeto con clave 'usuario' igual a usr
+            let usuarioArray = usuarios[i];
+            let usuarioObjeto = usuarioArray[0];// Como cada usuarioArray tiene un solo objeto, accedemos al primer elemento (indice 0)
+            
+            if (usuarioObjeto && usuarioObjeto.usuario === usr) {
+                userEncontrado = usuarioObjeto;// Encontramos el usuario, almacenamos los valores encontrados
+                passEncontrado = usuarioObjeto.pass;
+                break; // sale del bucle una vez encontrado el usuario
+            }
+        }
+
+        if (userEncontrado && userEncontrado.usuario === usr && passEncontrado === pas && usr!=null&&usr!=''){
+            
+            document.querySelector('#mensajeLogin').innerText = "Usuario y password correcto";//Envia mensaje a <DIV> con ID "mensajeLogin" en el documento
+            window.location.href="./src/views/carrito.html";//redirecciona a pagina.
+            } else{document.querySelector('#mensajeLogin').innerText = "Datos incorrectos";}
+
+    }
+
+/**
+ * FUNCIONES CON LIBRERIAS SWEETALERT
+ */
+    function mensajeRegistro() {
+        event.preventDefault()
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        let [[{nombre}]]= usuarios; //Destructuring para tomar informacion valores 
+               
+            Swal.fire({
+            title: `Bienvenido  ${nombre} \n ¡Registro Exitoso!`,
+            text: 'Presiona OK para continuar .',
+            imageUrl: "./img/logo.jpg",
+            imageWidth: 300,
+            imageHeight: 100,
+            imageAlt: "Custom image",
+            confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'index.html'; // Redirige a la página index.html
+            }
+        });
+
+    }
+        
+
+
+
+
+
+
+
+
+
